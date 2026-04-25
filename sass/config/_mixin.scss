@@ -1,0 +1,58 @@
+@use "sass:map";
+
+$bp: (
+  pc: "screen and (min-width: 1024px)",
+  tb: "screen and (max-width: 1023px)",
+  sp: "screen and (max-width: 765px)",
+  spMd: "screen and (max-width: 375px)",
+  spSm: "screen and (max-width: 320px)"
+);
+
+@mixin mq($breakpoint) {
+  @media #{map.get($bp, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin flex(
+  $jc: center,
+  $ai: center,
+  $dir: row,
+  $wrap: nowrap
+) {
+  display: flex;
+  flex-direction: $dir;
+  flex-wrap: $wrap;
+  justify-content: $jc;
+  align-items: $ai;
+}
+
+
+// ⭐️事前に自分で変える
+@mixin buttonBase {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 9999px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  }
+
+  @mixin buttonStyle($bgColor, $textColor, $borderColor: transparent) {
+    background-color: $bgColor;
+    color: $textColor;
+    border: 1px solid $borderColor;
+  
+    &:hover {
+      opacity: 0.8;
+    }
+  }

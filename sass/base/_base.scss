@@ -1,0 +1,19 @@
+@use "../config/mixin" as *;
+@use "../config/variable" as *;
+
+html {
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+    scroll-padding-top: 160px;
+  
+
+}
+
+body {
+    color: $blackColor;
+    background: $whiteColor;
+    font-family: YuGothic , "Archivo Narrow", sans-serif;
+    line-height: 2;
+    letter-spacing: 0.1em;
+    font-size: 1.6rem;
+}
