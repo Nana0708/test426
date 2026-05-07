@@ -3,3 +3,64 @@
 // .c-section-title
 // .c-section-title__main
 // .c-section-title--center
+
+
+.c-section-title {
+  position: relative;
+  display: inline-block;
+  padding-bottom: clamp(8px, 1.5vw, 12px);
+
+  &__bg {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-60%);
+    font-family: 'Pinyon Script', cursive;
+    font-size: clamp(4rem, 8vw, 7rem);
+    color: $primary-color;
+    opacity: 0.12;
+    white-space: nowrap;
+    pointer-events: none;
+    margin: 0;
+    line-height: 1;
+  }
+
+  &__main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 7vw, 6.4rem);
+    font-weight: 400;
+    color: $primary-color;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    margin: 0;
+  }
+
+  &__sub {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: $primary-color;
+    letter-spacing: 0.08em;
+    margin: clamp(4px, 1vw, 8px) 0 0;
+  }
+}
+
+
+.c-page-fv {
+    width: 100%;
+    height: clamp(200px, 30vw, 380px);
+    background-color: $bg-color-sub;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    &__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(4rem, 8vw, 9rem);
+      font-weight: 400;
+      color: $primary-color;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-align: center;
+      margin: 0;
+      line-height: 1;
+    }
+  }

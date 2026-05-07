@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ニュース一覧 | Valentine Rose</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="/" class="header__logo">
+        <div class="header__logo-img">
+          <img src="logo.png" alt="Valentine Rose ロゴ" width="50" height="60" loading="lazy">
+        </div>
+        <span class="header__logo-text">VALENTINE<br>ROSE</span>
+      </a>
+
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li class="header__nav-item"><a href="/concept" class="header__nav-link">Concept</a></li>
+          <li class="header__nav-item"><a href="/price" class="header__nav-link">Price</a></li>
+          <li class="header__nav-item"><a href="/news" class="header__nav-link">News</a></li>
+        </ul>
+      </nav>
+
+      <a href="/reserve" class="header__btn">
+        <span class="header__btn-icon" aria-hidden="true">📅</span>
+        ご予約
+      </a>
+
+      <!-- SP ハンバーガー -->
+      <button class="header__hamburger" type="button" aria-label="メニューを開く">
+        メニュー <span class="header__hamburger-icon" aria-hidden="true">≡</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========== FV ========== -->
+    <section class="fv">
+      <div class="fv__title-wrap">
+        <h1 class="fv__title">ALL</h1>
+      </div>
+      <div class="fv__img-wrap">
+        <img
+          src="fv-archive.jpg"
+          alt="バラとタオルのイメージ"
+          width="1440"
+          height="500"
+          class="fv__img"
+        >
+      </div>
+    </section>
+
+    <!-- ========== BREADCRUMB ========== -->
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <div class="breadcrumb__inner">
+        <ol class="breadcrumb__list">
+          <li class="breadcrumb__item">
+            <a href="/" class="breadcrumb__link">ホーム</a>
+          </li>
+          <li class="breadcrumb__separator" aria-hidden="true">｜</li>
+          <li class="breadcrumb__item breadcrumb__item--current" aria-current="page">
+            ニュース一覧
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ========== ARCHIVE SECTION ========== -->
+    <section class="archive">
+      <div class="archive__inner">
+
+        <!-- section__ttl (h2) -->
+        <h2 class="section__ttl">
+          <span class="section__ttl-en">News</span>
+          <span class="section__ttl-ja">ニュース一覧</span>
+        </h2>
+
+        <div class="archive__layout">
+
+          <!-- ===== MAIN (左カラム) ===== -->
+          <div class="archive__main">
+            <ul class="archive__list">
+
+              <li class="archive__item">
+                <a href="/news/1" class="archive__link">
+                  <div class="archive__meta">
+                    <time class="archive__date" datetime="2024-09-26">2024.09.26</time>
+                    <span class="archive__title">タイトルが入ります。タイトルが入ります。</span>
+                  </div>
+                  <span class="archive__category">Uncategorized</span>
+                </a>
+              </li>
+
+              <li class="archive__item">
+                <a href="/news/2" class="archive__link">
+                  <div class="archive__meta">
+                    <time class="archive__date" datetime="2024-09-22">2024.09.22</time>
+                    <span class="archive__title">タイトルが入ります。タイトルが入ります。</span>
+                  </div>
+                  <span class="archive__category">News</span>
+                </a>
+              </li>
+
+              <li class="archive__item">
+                <a href="/news/3" class="archive__link">
+                  <div class="archive__meta">
+                    <time class="archive__date" datetime="2024-09-22">2024.09.22</time>
+                    <span class="archive__title">sample</span>
+                  </div>
+                  <span class="archive__category">news</span>
+                </a>
+              </li>
+
+              <li class="archive__item">
+                <a href="/news/4" class="archive__link">
+                  <div class="archive__meta">
+                    <time class="archive__date" datetime="2024-09-22">2024.09.22</time>
+                    <span class="archive__title">sample</span>
+                  </div>
+                  <span class="archive__category">news</span>
+                </a>
+              </li>
+
+              <li class="archive__item">
+                <a href="/news/5" class="archive__link">
+                  <div class="archive__meta">
+                    <time class="archive__date" datetime="2024-09-22">2024.09.22</time>
+                    <span class="archive__title">sample</span>
+                  </div>
+                  <span class="archive__category">news</span>
+                </a>
+              </li>
+
+            </ul>
+
+            <!-- ===== PAGINATION ===== -->
+            <nav class="pagination" aria-label="ページネーション">
+              <ul class="pagination__list">
+                <li class="pagination__item pagination__item--current">
+                  <span class="pagination__num pagination__num--current" aria-current="page">1</span>
+                </li>
+                <li class="pagination__item">
+                  <a href="/news/page/2" class="pagination__num">2</a>
+                </li>
+                <li class="pagination__item">
+                  <a href="/news/page/3" class="pagination__num">3</a>
+                </li>
+                <li class="pagination__item pagination__item--dots">
+                  <span class="pagination__dots">…</span>
+                </li>
+                <li class="pagination__item">
+                  <a href="/news/page/5" class="pagination__num">5</a>
+                </li>
+                <li class="pagination__item">
+                  <a href="/news/page/2" class="pagination__next" aria-label="次のページへ">›</a>
+                </li>
+              </ul>
+            </nav>
+
+          </div><!-- /.archive__main -->
+
+          <!-- ===== SIDEBAR (右カラム) ===== -->
+          <aside class="archive__sidebar">
+            <div class="sidebar">
+              <h3 class="sidebar__ttl">Category</h3>
+              <ul class="sidebar__list">
+                <li class="sidebar__item">
+                  <a href="/news" class="sidebar__link sidebar__link--active">すべて</a>
+                </li>
+                <li class="sidebar__item">
+                  <a href="/news/category/uncategorized" class="sidebar__link">Uncategorized</a>
+                </li>
+                <li class="sidebar__item">
+                  <a href="/news/category/info" class="sidebar__link">お知らせ</a>
+                </li>
+                <li class="sidebar__item">
+                  <a href="/news/category/campaign" class="sidebar__link">キャンペーン</a>
+                </li>
+                <li class="sidebar__item">
+                  <a href="/news/category/column" class="sidebar__link">コラム</a>
+                </li>
+              </ul>
+            </div>
+          </aside><!-- /.archive__sidebar -->
+
+        </div><!-- /.archive__layout -->
+
+      </div><!-- /.archive__inner -->
+    </section>
+
+  </main>
+
+  <!-- ========== PAGE TOP BTN ========== -->
+  <button class="page-top" type="button" aria-label="ページトップへ戻る">
+    <span class="page-top__icon" aria-hidden="true">∧</span>
+  </button>
+
+</body>
+</html>

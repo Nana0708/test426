@@ -1,22 +1,22 @@
-
 // 色管理用の変数
-$blackColor: #555555;
-$blackColorPure: #000;
-$whiteColor: #F9F9F9;
-$whiteColor02: #FFF;
-$primaryColor: #93C572;
-$accentColor: #F7B560;
-$shadowColor: rgba(0, 0, 0, 0.16);
-$textShadowColor: rgba(0, 0, 0, 0.3);
+$text-color: #333333;
+$bg-color: #f9f8f6;
+$bg-color-sub: #d4cebe;
+$primary-color: #ca7f13;
+$accent-color: #54372d;
+$accent-color-sub: #949e33;
+$shadow-color: rgba(0, 0, 0, 0.16);
+$text-shadow-color: rgba(0, 0, 0, 0.3);
 
 // コンテンツ幅管理用の変数
-$contentWidthSm: 800px;
-$contentWidth: 960px;
-$contentWidthLg: 1088px;
+$content-width-s:   579px;
+$content-width-m:   960px;
+$content-width-l:  1200px;
+$content-width-xl: 1440px;// default
 
 // z-index管理用の変数
-$zIndexBack: -1;
-$zIndexDefault: 1;
-$zIndexHeader: 100;
-$zIndexMenu: 150;
-$zIndexModal: 200;
+$z-index-back: -1;
+$z-index-default: 1;
+$z-index-header: 100;
+$z-index-menu: 150;
+$z-index-modal: 200;

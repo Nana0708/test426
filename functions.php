@@ -35,7 +35,7 @@ function script_init()
     // Font Awesome
     wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css', array(), '6.5.1');
     // GoogleFonts
-    wp_enqueue_style('googlefonts', 'https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&display=swap');
+    wp_enqueue_style('googlefonts', 'https://fonts.googleapis.com/css2?family=Marcellus&family=Parisienne&display=swap', array(), null);
     // CSS
     wp_enqueue_style('my_style', get_theme_file_uri('css/style.css'), array(), filemtime(get_theme_file_path('css/style.css')), 'all');
     // JS
@@ -83,17 +83,11 @@ function breadcrumb()
             array_unshift($cat_list, '<li><a href="' . $cat_link . '">' . $cat->name . '</a></li>');
             $cat_id = $cat->parent;
         }
-        echo $home; //ホームのリンクを表示
-        echo '<li><a href="' . get_post_type_archive_link('post') . '">お知らせ一覧</a></li>'; // お知らせ一覧のリンクを表示
+        echo $home;
         foreach ($cat_list as $value) {
             echo $value;
         }
         the_archive_title('<li>', '</li>');
-    }
-    // アーカイブ・タグページ
-    else if (is_home()) {
-        echo $home;
-        echo '<li>お知らせ一覧</li>';
     }
     // 投稿ページ
     else if (is_single()) {
@@ -106,8 +100,7 @@ function breadcrumb()
             array_unshift($cat_list, '<li><a href="' . $cat_link . '">' . $cat->name . '</a></li>');
             $cat_id = $cat->parent;
         }
-        echo $home; //ホームのリンクを表示
-        echo '<li><a href="' . get_post_type_archive_link('post') . '">お知らせ一覧</a></li>'; // お知らせ一覧のリンクを表示
+        echo $home;
         foreach ($cat_list as $value) {
             echo $value;
         }
@@ -148,3 +141,101 @@ function my_wpcf7_validation_error_message_kana($result, $tag)
     return $result;
 }
 add_filter('wpcf7_validate_text', 'my_wpcf7_validation_error_message_kana', 10, 2);
+
+
+
+// お知らせ投稿タイプ + タクソノミー
+function register_news_post_type()
+{
+    $labels = array(
+        'name'                  => _x('ニュース', 'Post type general name', 'textdomain'),
+        'singular_name'         => _x('ニュース', 'Post type singular name', 'textdomain'),
+        'menu_name'             => _x('ニュース', 'Admin Menu text', 'textdomain'),
+        'add_new'               => __('ニュースを追加', 'textdomain'),
+        'add_new_item'          => __('新しいニュースを追加', 'textdomain'),
+        'edit_item'             => __('ニュースを編集', 'textdomain'),
+        'new_item'              => __('新規ニュース', 'textdomain'),
+        'view_item'             => __('ニュースを見る', 'textdomain'),
+        'all_items'             => __('すべてのニュース', 'textdomain'),
+        'search_items'          => __('ニュースを検索', 'textdomain'),
+        'not_found'             => __('ニュースが見つかりません。', 'textdomain'),
+        'not_found_in_trash'    => __('ゴミ箱にニュースはありません。', 'textdomain'),
+        'archives'              => _x('ニュースアーカイブ', 'textdomain'),
+    );
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'has_archive'        => true,
+        'rewrite'            => array('slug' => 'news'),
+        'menu_position'      => 5,
+        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
+        'show_in_rest'       => true,
+    );
+    register_post_type('news', $args);
+    // お知らせカテゴリー
+    register_taxonomy('news_category', 'news', array(
+        'label'        => __('お知らせ用カテゴリー', 'textdomain'),
+        'hierarchical' => true,
+        'rewrite'      => array('slug' => 'news-category'),
+        'show_in_rest' => true,
+    ));
+}
+add_action('init', 'register_news_post_type');
+
+// 店舗投稿タイプ + タクソノミー
+function register_salons_post_type()
+{
+    $labels = array(
+        'name'                  => _x('店舗', 'Post type general name', 'textdomain'),
+        'singular_name'         => _x('店舗', 'Post type singular name', 'textdomain'),
+        'menu_name'             => _x('店舗', 'Admin Menu text', 'textdomain'),
+        'add_new'               => __('店舗を追加', 'textdomain'),
+        'add_new_item'          => __('新しい店舗を追加', 'textdomain'),
+        'edit_item'             => __('店舗を編集', 'textdomain'),
+        'new_item'              => __('新規店舗', 'textdomain'),
+        'view_item'             => __('店舗を見る', 'textdomain'),
+        'all_items'             => __('すべての店舗', 'textdomain'),
+        'search_items'          => __('店舗を検索', 'textdomain'),
+        'not_found'             => __('店舗が見つかりません。', 'textdomain'),
+        'not_found_in_trash'    => __('ゴミ箱に店舗はありません。', 'textdomain'),
+        'archives'              => _x('店舗一覧', 'textdomain'),
+    );
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'has_archive'        => true,
+        'rewrite'            => array('slug' => 'salons'),
+        'menu_position'      => 6, // newsと被らない位置
+        'supports'           => array('title', 'editor', 'thumbnail', 'custom-fields'),
+        'show_in_rest'       => true,
+    );
+    register_post_type('salons', $args);
+    // 店舗エリア（都道府県など）
+    register_taxonomy('salons_area', 'salons', array(
+        'label'        => __('店舗エリア', 'textdomain'),
+        'hierarchical' => true,
+        'rewrite'      => array('slug' => 'salons-area'),
+        'show_in_rest' => true,
+    ));
+}
+add_action('init', 'register_salons_post_type');
+
+// 店舗投稿ページ　タイトルを追加⇨店舗名を入力
+function change_title_placeholder( $title ) {
+    $screen = get_current_screen();
+    
+    // 'shop'の部分を実際のカスタム投稿タイプのスラッグに変更
+    if ( $screen->post_type == 'salons' ) {
+        $title = '店舗名を入力';
+    }
+    
+    return $title;
+}
+add_filter( 'enter_title_here', 'change_title_placeholder' );
+
+// デフォルト投稿タイプの削除
+function remove_menus()
+{
+    remove_menu_page('edit.php');
+}
+add_action('admin_menu', 'remove_menus');

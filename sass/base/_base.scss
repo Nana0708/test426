@@ -1,6 +1,12 @@
 @use "../config/mixin" as *;
 @use "../config/variable" as *;
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
     scroll-behavior: smooth;
     font-size: 62.5%;
@@ -10,10 +16,10 @@ html {
 }
 
 body {
-    color: $blackColor;
-    background: $whiteColor;
-    font-family: YuGothic , "Archivo Narrow", sans-serif;
+    color: $text-color;
+    background: $bg-color;
+    font-family: '游ゴシック', 'Yu Gothic', 'Hiragino Sans', sans-serif;
     line-height: 2;
     letter-spacing: 0.1em;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
 }

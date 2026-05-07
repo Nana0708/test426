@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>タイトルが入ります。 | Valentine Rose</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="/" class="header__logo">
+        <div class="header__logo-img">
+          <img src="images/logo.png" alt="Valentine Rose ロゴ" width="50" height="60" loading="lazy">
+        </div>
+        <span class="header__logo-text">VALENTINE<br>ROSE</span>
+      </a>
+
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li class="header__nav-item"><a href="/concept" class="header__nav-link">Concept</a></li>
+          <li class="header__nav-item"><a href="/price" class="header__nav-link">Price</a></li>
+          <li class="header__nav-item"><a href="/news" class="header__nav-link">News</a></li>
+        </ul>
+      </nav>
+
+      <a href="/reserve" class="header__btn">
+        <span class="header__btn-icon" aria-hidden="true">📅</span>
+        ご予約
+      </a>
+
+      <button class="header__hamburger" type="button" aria-label="メニューを開く">
+        メニュー <span class="header__hamburger-icon" aria-hidden="true">≡</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========== FV ========== -->
+    <section class="fv">
+      <div class="fv__title-wrap">
+        <h1 class="fv__title">NEWS</h1>
+      </div>
+      <div class="fv__img-wrap">
+        <img
+          src="images/fv-single.jpg"
+          alt="バラとタオルのイメージ"
+          width="1440"
+          height="600"
+          class="fv__img"
+        >
+      </div>
+    </section>
+
+    <!-- ========== BREADCRUMB ========== -->
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <div class="breadcrumb__inner">
+        <ol class="breadcrumb__list">
+          <li class="breadcrumb__item">
+            <a href="/" class="breadcrumb__link">ホーム</a>
+          </li>
+          <li class="breadcrumb__separator" aria-hidden="true">｜</li>
+          <li class="breadcrumb__item">
+            <a href="/news" class="breadcrumb__link">ニュース一覧</a>
+          </li>
+          <li class="breadcrumb__separator" aria-hidden="true">｜</li>
+          <li class="breadcrumb__item breadcrumb__item--current" aria-current="page">
+            タイトルが入ります。タイトルが入ります。
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ========== SINGLE SECTION ========== -->
+    <section class="single">
+      <div class="single__inner">
+        <div class="single__layout">
+
+          <!-- ===== MAIN（左カラム） ===== -->
+          <div class="single__main">
+
+            <h2 class="single__ttl">タイトルが入ります。タイトルが入ります。</h2>
+
+            <div class="single__meta">
+              <span class="single__category">News</span>
+              <time class="single__date" datetime="2024-09-22">2024.09.22</time>
+            </div>
+
+            <div class="single__eyecatch">
+              <img
+                src="images/single-eyecatch.jpg"
+                alt="アイキャッチ画像"
+                width="750"
+                height="500"
+                loading="lazy"
+                class="single__eyecatch-img"
+              >
+            </div>
+
+            <div class="single__content">
+
+              <p class="single__text">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+
+              <h3 class="single__heading">小見出しが入ります。</h3>
+
+              <p class="single__text">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+
+              <h3 class="single__heading">小見出しが入ります。</h3>
+
+              <p class="single__text">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+
+            </div>
+
+            <div class="single__btn-wrap">
+              <a href="/news" class="single__btn">お知らせ一覧へ</a>
+            </div>
+
+          </div><!-- /.single__main -->
+
+          <!-- ===== SIDEBAR（右カラム） ===== -->
+          <aside class="single__sidebar">
+            <div class="sidebar">
+              <h3 class="sidebar__ttl">Category</h3>
+              <ul class="sidebar__list">
+                <li class="sidebar__item">
+                  <a href="/news" class="sidebar__link sidebar__link--active">すべて</a>
+                </li>
+                <li class="sidebar__item">
+                  <a href="/news/category/uncategorized" class="sidebar__link">Uncategorized</a>
+                </li>
+                <li class="sidebar__item">
+                  <a href="/news/category/info" class="sidebar__link">お知らせ</a>
+                </li>
+                <li class="sidebar__item">
+                  <a href="/news/category/campaign" class="sidebar__link">キャンペーン</a>
+                </li>
+                <li class="sidebar__item">
+                  <a href="/news/category/column" class="sidebar__link">コラム</a>
+                </li>
+              </ul>
+            </div>
+          </aside>
+
+        </div><!-- /.single__layout -->
+      </div><!-- /.single__inner -->
+    </section>
+
+  </main>
+
+  <!-- ========== PAGE TOP ========== -->
+  <button class="page-top" type="button" aria-label="ページトップへ戻る">
+    <span class="page-top__icon" aria-hidden="true">∧</span>
+  </button>
+
+</body>
+</html>
