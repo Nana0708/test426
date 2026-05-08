@@ -4,6 +4,14 @@
 // .c-section-title__main
 // .c-section-title--center
 
+.c_section__inner {
+    margin-inline:auto;
+    max-width: $content-width-l;
+    padding-inline: 120px;
+    @include mq("sp") {
+      padding-inline: 0 30px;
+    }
+}
 
 .c-section-title {
   position: relative;
@@ -13,10 +21,10 @@
   &__bg {
     position: absolute;
     top: 50%;
-    left: 100%;
-    transform: translateY(-60%);
-    font-family: 'Pinyon Script', cursive;
-    font-size: clamp(4rem, 8vw, 7rem);
+    left: 70%;
+    transform: translateY(-75%);
+    font-family: 'Parisienne', cursive;
+    font-size: clamp(4rem, 8vw, 168rem);
     color: $primary-color;
     opacity: 0.12;
     white-space: nowrap;
@@ -26,8 +34,8 @@
   }
 
   &__main {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(4rem, 7vw, 6.4rem);
+    font-family: 'Marcellus', serif;
+    font-size: clamp(1.1rem, 7vw, 8.4rem);
     font-weight: 400;
     color: $primary-color;
     letter-spacing: 0.02em;
@@ -36,7 +44,8 @@
   }
 
   &__sub {
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+    font-size: clamp(1.2rem, 1.5vw, 1.4rem);
     color: $primary-color;
     letter-spacing: 0.08em;
     margin: clamp(4px, 1vw, 8px) 0 0;
@@ -62,5 +71,122 @@
       text-align: center;
       margin: 0;
       line-height: 1;
+    }
+  }
+
+
+  .c-btn {
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8em;
+    padding: 12px 24px;
+    border-radius: 100px;
+    border: 2px solid $accent-color-sub;
+    background-color: $accent-color-sub;
+    color: $white;
+    font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      background-color 0.25s ease,
+      color 0.25s ease;
+  
+    // テキストの大文字指定はtext-transformで対応
+    text-transform: none;
+  
+    @include mq(sp) {
+      padding: 1.2rem 2.8rem;
+    }
+  
+    // ホバー: 色反転（outline で枠線を追加し border によるサイズ変化を避ける）
+    @include hover {
+      background-color: $white;
+      color: $accent-color-sub;
+      outline: 2px solid $accent-color-sub;
+      outline-offset: -2px;
+    }
+  
+    // =============================
+    // アイコン付きバリアント
+    // =============================
+    &--icon {
+      gap: 1rem;
+  
+      .c-btn__icon {
+        font-size: 1em;
+        line-height: 1;
+      }
+    }
+  }
+
+
+
+  .c-fv {
+    overflow: hidden;
+  
+    &__heading {
+      @include flex(center, center);
+  
+      height: 36rem;
+      background-color: $bg-color-sub;
+  
+      @include mq(sp) {
+        height: 20rem;
+      }
+    }
+  
+    &__inner {
+      width: 100%;
+      max-width: $content-width-xl;
+      margin-inline: auto;
+      padding-inline: clamp(2rem, 5vw, 12rem);
+    }
+  
+    &__title {
+      font-family: "Marcellus", serif;
+      font-size: clamp(3.2rem, 5.5vw, 8rem);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: 0.08em;
+      text-align: center;
+      text-transform: uppercase;
+      color: $primary-color;
+    }
+  
+    &__image-wrapper {
+      position: relative;
+      height: 60rem;
+      overflow: hidden;
+  
+      @include mq(sp) {
+        height: 30rem;
+      }
+    }
+  
+    &__image {
+      position: absolute;
+      inset: -10% 0;
+  
+      width: 100%;
+      height: 120%;
+  
+      overflow: hidden;
+      will-change: transform;
+  
+      @include mq(sp) {
+        inset: -8% 0;
+        height: 116%;
+      }
+  
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
     }
   }

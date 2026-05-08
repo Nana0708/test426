@@ -1,2 +1,13 @@
 @use "../config/mixin" as *;
 @use "../config/variable" as *;
+
+
+
+.news-btn {
+    font-size: clamp(1.4rem, 1.5vw, 1.6rem);
+}
+
+.header__cta-btn {
+    font-size: clamp(1.8rem, 1.5vw, 2rem);
+
+}
