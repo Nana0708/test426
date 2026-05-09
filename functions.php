@@ -30,18 +30,76 @@ add_action('after_setup_theme', 'theme_setup');
 
 add_post_type_support('page', 'excerpt');
 
+
+
 function script_init()
 {
-    // Font Awesome
-    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css', array(), '6.5.1');
-// GoogleFonts
-    wp_enqueue_style('googlefonts', 'https://fonts.googleapis.com/css2?family=Marcellus&family=Parisienne&family=Noto+Sans+JP:wght@400;700&display=swap', array(), null);
-    // CSS
-    wp_enqueue_style('my_style', get_theme_file_uri('css/style.css'), array(), filemtime(get_theme_file_path('css/style.css')), 'all');
-    // JS
-    wp_enqueue_script('my_script', get_theme_file_uri('js/main.js'), array('jquery'), filemtime(get_theme_file_path('js/main.js')), true);
+    wp_enqueue_style(
+        'swiper-css',
+        'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css',
+        array(),
+        '11.0.0'
+    );
+
+    wp_enqueue_style(
+        'my-style',
+        get_theme_file_uri('/css/style.css'),
+        array(),
+        filemtime(get_theme_file_path('/css/style.css')),
+        'all'
+    );
+
+    wp_enqueue_script(
+        'swiper-js',
+        'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js',
+        array(),
+        '11.0.0',
+        true
+    );
+
+    wp_enqueue_script(
+        'hamburger-js',
+        get_theme_file_uri('/js/hamburger.js'),
+        array(),
+        filemtime(get_theme_file_path('/js/hamburger.js')),
+        true
+    );
+
+    wp_enqueue_script(
+        'accordion-js',
+        get_theme_file_uri('/js/accordion.js'),
+        array(),
+        filemtime(get_theme_file_path('/js/accordion.js')),
+        true
+    );
+
+    wp_enqueue_script(
+        'swiper-custom-js',
+        get_theme_file_uri('/js/swiper.js'),
+        array('swiper-js'),
+        filemtime(get_theme_file_path('/js/swiper.js')),
+        true
+    );
+
+    wp_enqueue_script(
+        'animation-js',
+        get_theme_file_uri('/js/animation.js'),
+        array(),
+        filemtime(get_theme_file_path('/js/animation.js')),
+        true
+    );
+
+    wp_enqueue_script(
+        'main-js',
+        get_theme_file_uri('/js/main.js'),
+        array(),
+        filemtime(get_theme_file_path('/js/main.js')),
+        true
+    );
 }
+
 add_action('wp_enqueue_scripts', 'script_init');
+
 
 /**
  * 投稿スラッグを投稿IDに自動変換（固定ページを除く）

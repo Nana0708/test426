@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <title>サイトタイトル</title>
-    <head>
+
       <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -14,82 +14,219 @@
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Parisienne&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 
-    </head>
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
-    <header id="header">
-      <div class="inner">
-        <p class="logo"><a href="/">サイトタイトル</a></p>
-        <nav id="gnav">
-          <ul>
-            <li><a href="#">メニュー1</a></li>
-            <li><a href="#">メニュー2</a></li>
-            <li><a href="#">メニュー3</a></li>
-          </ul>
-        </nav>
-      </div>
+<body>
 
-            <!-- View All ボタン -->
-  <div class="preview-block">
-    <a href="#" class="c-btn news-btn">View All</a>
+<!-- =============================
+  header
+============================= -->
+<header class="header">
+  <div class="header__inner">
+
+    <!-- ロゴ + サイト名 → h1（トップページ）-->
+    <h1 class="header__logo">
+      <a href="/" class="header__logo-link">
+        <!-- ヘッダーロゴはFV扱いのため loading="lazy" 除外 -->
+        <div class="header__logo-img">
+          <img
+            src="./img/logo.webp"
+            alt="Valentine Rose ロゴ"
+            width="64"
+            height="64"
+          >
+        </div>
+        <span class="header__logo-text">Valentine<br>Rose</span>
+      </a>
+    </h1>
+
+    <!-- PC ナビゲーション -->
+    <nav class="header__nav" aria-label="グローバルナビゲーション">
+      <ul class="header__nav-list">
+        <li class="header__nav-item">
+          <a href="#concept" class="header__nav-link">Concept</a>
+        </li>
+        <li class="header__nav-item">
+          <a href="#price" class="header__nav-link">Price</a>
+        </li>
+        <li class="header__nav-item">
+          <a href="#news" class="header__nav-link">News</a>
+        </li>
+      </ul>
+
+      <!-- CTA ボタン -->
+      <div class="c-btn">
+        <a href="#reserve" class="c-btn--icon header__cta-btn">
+          <i class="fa-regular fa-calendar"></i>
+          ご予約
+        </a>
+      </div>
+    </nav>
+
+    <!-- SP ハンバーガーボタン -->
+    <button
+      class="header__hamburger"
+      type="button"
+      aria-label="メニューを開く"
+      aria-expanded="false"
+      aria-controls="sp-drawer"
+    >
+      <span class="header__hamburger-text">メニュー</span>
+      <span class="header__hamburger-lines" aria-hidden="true">
+        <span class="header__hamburger-line"></span>
+        <span class="header__hamburger-line"></span>
+        <span class="header__hamburger-line"></span>
+      </span>
+    </button>
+
+  </div><!-- /.header__inner -->
+</header>
+
+
+<!-- =============================
+  SP ドロワーメニュー
+============================= -->
+<div
+  class="drawer"
+  id="sp-drawer"
+  aria-hidden="true"
+>
+  <!-- ロゴ：FV外のためloading="lazy"付与 -->
+  <div class="drawer__logo">
+    <img
+      src="dummy-logo.png"
+      alt="Valentine Rose ロゴ"
+      width="32"
+      height="32"
+      loading="lazy"
+    >
   </div>
 
+  <!-- 閉じるボタン -->
+  <button
+    class="drawer__close"
+    type="button"
+    aria-label="メニューを閉じる"
+  >
+    <span aria-hidden="true">×</span>
+  </button>
 
-    </header>
-    <!-- /#header -->
+  <!-- ナビ -->
+  <nav class="drawer__nav" aria-label="SPドロワーナビゲーション">
+    <ul class="drawer__nav-list">
+      <li class="drawer__nav-item"><a href="/" class="drawer__nav-link">Home</a></li>
+      <li class="drawer__nav-item"><a href="#concept" class="drawer__nav-link">Salon Concept</a></li>
+      <li class="drawer__nav-item"><a href="#price" class="drawer__nav-link">Price Menu</a></li>
+      <li class="drawer__nav-item"><a href="#salons" class="drawer__nav-link">Salons</a></li>
+      <li class="drawer__nav-item"><a href="#news" class="drawer__nav-link">News</a></li>
+      <li class="drawer__nav-item"><a href="#reserve" class="drawer__nav-link">Reserve</a></li>
+    </ul>
+  </nav>
+</div>
 
-    <div class="c-btn">
-      <a href="#" class="btn--icon header__cta-btn">
-        <i class="fa-regular fa-calendar"></i>
-        ご予約
-      </a>
+<!-- オーバーレイ -->
+<div class="drawer-overlay" aria-hidden="true"></div>
+
+<main>
+<div class="fv">
+    <div class="fv__inner">
+      <div class="fv__text-wrapper">
+      <p class="fv__text">自分を<br class="pc-dn">知っている人は<br>美しい。</p>
+        </div>
     </div>
+</div>
+  
 
 
-    <main id="main">
-      <!-- MV -->
-      <section id="fv">
-        <div class="fv__inner">
-          <div class="fv__img"></div>
 
-          <div class="fv__txt-wrap">
-            <h2 class="fv__txt">自分を知っている人は 美しい。</h2>
+</main>
+
+    
+      <footer class="footer">
+        <div class="footer__inner">
+    
+          <!-- ロゴ -->
+          <div class="footer__logo-wrap">
+            <a href="#" class="footer__logo">
+              <figure class="footer__logo-img">
+                <img
+                  src="./img/logo.webp"
+                  alt="Valentine Rose ロゴ"
+                  width="60"
+                  height="78"
+                  loading="lazy"
+                >
+              </figure>
+              <span class="footer__logo-text">
+                <span>VALENTINE</span>
+                <span>ROSE</span>
+              </span>
+            </a>
           </div>
-        </div>
-      </section>
-      <!-- /#mv -->
-
-      <!-- セクション例 -->
-      <section id="news" class="news">
-        <div class="news__container">
-          <div class="c-section-title">
-            <p class="c-section-title__bg" aria-hidden="true">News</p>
-            <h2 class="c-section-title__main">News</h2>
-            <p class="c-section-title__sub">お知らせ</p>
+    
+          <!-- ナビゲーション -->
+          <nav class="footer__nav">
+            <!-- PC: 1行に見せるためrow1・row2をまとめるラッパー -->
+            <div class="footer__nav-group">
+              <!-- 1行目（SP）/ PC左側：TOP | Concept | Price -->
+              <ul class="footer__nav-row">
+                <li><a href="#" class="footer__nav-link">TOP</a></li>
+                <li class="footer__sep" aria-hidden="true">|</li>
+                <li><a href="#" class="footer__nav-link">Concept</a></li>
+                <li class="footer__sep" aria-hidden="true">|</li>
+                <li><a href="#" class="footer__nav-link">Price</a></li>
+              </ul>
+              <!-- PC時のみ表示するセパレーター -->
+              <span class="footer__sep footer__sep--pc-only" aria-hidden="true">|</span>
+              <!-- 2行目（SP）/ PC右側：News | Reserve -->
+              <ul class="footer__nav-row">
+                <li><a href="#" class="footer__nav-link">News</a></li>
+                <li class="footer__sep" aria-hidden="true">|</li>
+                <li><a href="#" class="footer__nav-link">Reserve</a></li>
+              </ul>
+            </div>
+            <!-- PC・SP共通2行目：Privacy Policy | Site Map -->
+            <ul class="footer__nav-row">
+              <li><a href="#" class="footer__nav-link">Privacy Policy</a></li>
+              <li class="footer__sep" aria-hidden="true">|</li>
+              <li><a href="#" class="footer__nav-link">Site Map</a></li>
+            </ul>
+          </nav>
+    
+          <!-- コピーライト -->
+          <div class="footer__copy-wrap">
+            <small class="footer__copy">© 2024 Valentine Rose., Ltd. All rights Reserved.</small>
           </div>
-          <p>テキストが入ります。</p>
+    
         </div>
-      </section>
+      </footer>
+    
+      <button class="page-top" id="pageTop" aria-label="ページトップへ戻る">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <path d="M5 14L11 8L17 14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
 
-      <!-- priceで使う -->
-      <i class="fa-solid fa-angle-right"></i>
 
-    </main>
-    <!-- /#main -->
 
-    <footer id="footer">
-      <div class="inner">
-        <p class="copy"><small>&copy; 2025 サイトタイトル</small></p>
-      </div>
-    </footer>
-    <!-- /#footer -->
+<!-- Swiper CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
 
-    <a href="#" class="pagetop">↑</a>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <script src="js/script.js"></script>
+<!-- Custom JS -->
+<script src="./js/hamburger.js"></script>
+<script src="./js/accordion.js"></script>
+<script src="./js/swiper.js"></script>
+<script src="./js/animation.js"></script>
+<script src="./js/main.js"></script>
   </body>
 </html>
+
 
 
 

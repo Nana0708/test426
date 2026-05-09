@@ -7,7 +7,364 @@
     font-size: clamp(1.4rem, 1.5vw, 1.6rem);
 }
 
-.header__cta-btn {
-    font-size: clamp(1.8rem, 1.5vw, 2rem);
 
+
+.header {
+  position: fixed;
+  top: 48px;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-color: transparent;
+  z-index: $z-index-header;
+
+  @include mq(sp) {
+    height: 32px;
+    padding: 0 20px;
+  }
+
+  // ----------------------------------------
+  // __inner
+  // ----------------------------------------
+  &__inner {
+    max-width: $content-width-xl;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 48px;
+    @include flex(space-between, center);
+
+    @include mq(sp) {
+      height: 32px;
+      padding: 0 20px;
+    }
+  }
+
+  // ----------------------------------------
+  // __logo
+  // ----------------------------------------
+  &__logo {
+    margin: 0; // h1 のデフォルト margin をリセット
+  }
+
+  &__logo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    // ② hoverミックスイン適用：タッチデバイスでは無効
+    transition: opacity 0.25s ease;
+
+    @include hover {
+      opacity: 0.6; // ③ ロゴ＋テキストまとめてふわっと薄くなる
+    }
+  }
+
+  &__logo-img {
+    width: 64px;
+    height: 64px;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @include mq(sp) {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__logo-text {
+    font-family: 'Marcellus', Georgia, serif;
+    font-size: 2.8rem; // 28px（html font-size 62.5% 基準）
+    line-height: 1.2;
+    color: $accent-color;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+
+    @include mq(sp) {
+      display: none; // SP ではロゴ画像のみ表示
+    }
+  }
+
+  // ----------------------------------------
+  // __nav（PC 用）
+  // ----------------------------------------
+  &__nav {
+    @include flex(flex-end, center);
+    gap: 32px;
+
+    @include mq(sp) {
+      display: none; // SP では非表示（ナビ全体 + CTAボタンを含む）
+    }
+  }
+
+  &__nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    @include flex(flex-end, center);
+    gap: 32px;
+  }
+
+  &__nav-item {
+    // 必要に応じて追記
+  }
+
+  &__nav-link {
+    font-family: 'Marcellus', Georgia, serif;
+    font-size: 2rem; // 20px
+    color: $accent-color;
+    text-decoration: none;
+    text-transform: none;
+    letter-spacing: 0.05em;
+    transition: color 0.25s ease;
+    position: relative;
+
+    @include hover {
+      color: $bg-color-sub;
+      outline: none;
+    }
+
+    // アクティブ状態
+    &.is-active {
+      color: $bg-color-sub;
+    }
+  }
+
+
+  // ----------------------------------------
+  // __hamburger（SP 用）
+  // ----------------------------------------
+  &__hamburger {
+    // SP以外はすべて非表示
+    display: none;
+
+    @include mq(sp) {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      flex-direction: row;
+      overflow: hidden;
+    background-color: $accent-color-sub;
+    color: $white;
+    border-radius: 100px;
+    border: 2px solid $accent-color-sub;
+    font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    padding: 8px 9px; // 全体サイズを100×30pxに近づける
+    min-width: 100px;
+    height: 30px;
+    justify-content: center;
+    }
+  }
+
+  &__hamburger-text {
+    @include mq(sp) {
+      font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+      font-size: 1.4rem;
+      color: $white;
+      line-height: 1;
+      white-space: nowrap;
+      // max-width の変化で左から右に向かって縮む
+      max-width: 60px;
+      overflow: hidden;
+      transition: max-width 0.45s ease-in-out, opacity 0.3s ease-in-out;
+    }
+  }
+
+  &__hamburger-lines {
+    @include mq(sp) {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      // max-width の変化で縮む
+      max-width: 12px;
+      width: 12px;
+      height: 8px;
+      flex-shrink: 0;
+      overflow: hidden;
+      transition: max-width 0.45s ease-in-out, opacity 0.3s ease-in-out;
+    }
+  }
+
+  &__hamburger-line {
+    @include mq(sp) {
+      display: block;
+      width: 12px;
+      height: 1px;
+      background-color: $white;
+      border-radius: 0;
+    }
+  }
+
+  // ドロワーが開いた状態：テキスト → 三本線の順で右へ縮む
+  &__hamburger.is-open {
+    .header__hamburger-text {
+      max-width: 0;
+      opacity: 0;
+    }
+
+    .header__hamburger-lines {
+      max-width: 0;
+      opacity: 0;
+    }
+  }
+}
+
+
+// =============================
+// drawer（SP フルスクリーンメニュー）
+// =============================
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $bg-color-sub;
+  z-index: $z-index-menu;
+  padding: 24px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  // 初期状態：右外へ退避
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+
+  // 開いた状態
+  &.is-open {
+    transform: translateX(0);
+  }
+
+  // ----------------------------------------
+  // __logo
+  // ----------------------------------------
+  &__logo {
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    flex-shrink: 0;
+    align-self: flex-start; // ロゴは左寄せを維持
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  // ----------------------------------------
+  // __close
+  // ----------------------------------------
+  &__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    background-color: $accent-color-sub;
+    border: none;
+    border-radius: 50%;
+    color: $white;
+    font-size: 1.6rem;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.25s ease;
+
+    // × 文字を ::after で描画し確実に中央寄せ
+    &::after {
+      content: '\00D7'; // ×
+      display: block;
+      line-height: 1;
+    }
+
+    span {
+      display: none;
+    }
+
+    @include hover {
+      opacity: 0.75;
+    }
+  }
+
+  // ----------------------------------------
+  // __nav
+  // ----------------------------------------
+  &__nav {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+    padding: 0 40px;
+  }
+
+  &__nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; // 左揃え
+    gap: 16px;
+  }
+
+  &__nav-item {
+    width: 100%;
+  }
+
+  &__nav-link {
+    font-family: 'Marcellus', Georgia, serif;
+    // 320px〜375pxで一行に収まるようclampで制御
+    // 320px時: 約17px / 375px時: 24px
+    font-size: clamp(1.7rem, 5vw, 2.4rem);
+    color: $primary-color;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em; // 320px対応で少し詰める
+    line-height: 1.4;
+    white-space: nowrap; // 折り返し禁止
+    display: block;
+    transition: opacity 0.25s ease;
+
+    @include hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+
+// =============================
+// drawer-overlay
+// =============================
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: calc(#{$z-index-menu} - 1);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+
+  &.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }

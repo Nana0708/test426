@@ -15,3 +15,22 @@ const parallax = () => {
 
 window.addEventListener("scroll", parallax);
 window.addEventListener("load", parallax);
+
+
+  // ============================================================
+// Page Top Button
+// ============================================================
+const pageTopBtn = document.getElementById('pageTop');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 1000) {
+    pageTopBtn.classList.add('is-visible');
+  } else {
+    pageTopBtn.classList.remove('is-visible');
+  }
+});
+
+pageTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
