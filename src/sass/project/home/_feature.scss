@@ -1,0 +1,319 @@
+@use "../../config/mixin" as *;
+@use "../../config/variable" as *;
+
+
+.feature {
+  background-color: #464646;
+  padding-block: clamp(60px, 8vw, 120px) clamp(60px, 8vw, 100px);
+  overflow: hidden;
+
+  // =============================
+  // __inner：横幅管理
+  // =============================
+  &__inner {
+    margin-inline: auto;
+    max-width: $content-width-l;
+    padding-inline: clamp(20px, 5vw, 60px);
+
+    @include mq(sp) {
+      padding-inline: 0;
+    }
+  }
+
+  // =============================
+  // __head：タイトル + 3カラムラッパー
+  // =============================
+  &__head {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: auto 1fr;
+    align-items: start;
+    gap: 0 clamp(20px, 3vw, 40px);
+
+    @include mq(tb) {
+      display: block;
+    }
+  }
+
+  // =============================
+  // c-section-title の配置調整（featureセクション内のみ上書き）
+  // common.scss の .c-section-title は変更しない
+  // =============================
+  .c-section-title {
+    grid-column: 1 / 3; // 左〜中央カラムにかかる
+    grid-row: 1;
+    text-align: left;
+    margin-bottom: clamp(20px, 3vw, 30px);
+
+    @include mq(tb) {
+      text-align: center;
+      padding-inline: 30px;
+    }
+  }
+
+  // =============================
+  // __left：左カラム（ナビゲーションリスト）
+  // =============================
+  &__left {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    align-items: center;
+    padding-top: clamp(20px, 4vw, 60px);
+
+    @include mq(tb) {
+      display: none;
+    }
+  }
+
+  &__guide-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(24px, 3vw, 40px);
+    width: 100%;
+  }
+
+  &__guide {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    opacity: 0.4;
+    transition: opacity 0.4s ease;
+    padding: 8px 0;
+    border: none; // 点線ボーダーを明示的にリセット
+    outline: none;
+    background: none;
+
+    &.active {
+      opacity: 1;
+    }
+
+    @include hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__guide-number {
+    font-family: 'Marcellus', serif;
+    font-size: 1.8rem;
+    color: $primary-color;
+    line-height: 1.6;
+    flex-shrink: 0;
+    min-width: 2em;
+  }
+
+  &__guide-text {
+    font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+    font-size: 1.8rem;
+    color: $primary-color;
+    line-height: 1.8;
+    margin: 0;
+  }
+}
+
+// =============================
+// スライダー（.slider）
+// =============================
+
+.slider {
+  grid-column: 2 / -1;
+  grid-row: 2;
+
+  // =============================
+  // __content：画像 + テキストの2カラム
+  // =============================
+  &__content {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(20px, 3vw, 40px);
+
+    @include mq(tb) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  // =============================
+  // __img-wrap：画像ラッパー
+  // =============================
+  &__img-wrap {
+    flex-shrink: 0;
+    width: clamp(240px, 30vw, 360px); // お手本に合わせて少し大きく
+    max-width: 360px;
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+    margin-top: clamp(-60px, -6vw, -80px); // 上にはみ出す量を増やす
+
+    @include mq(tb) {
+      width: 100%;
+      max-width: 100%;
+      aspect-ratio: auto;
+      margin-top: 0;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  // =============================
+  // __right：テキストエリア
+  // =============================
+  &__right {
+    flex: 1;
+    padding-top: clamp(30px, 4vw, 60px);
+    text-align: center;
+
+    @include mq(tb) {
+      padding-top: 0;
+      padding-inline: clamp(16px, 5vw, 30px);
+      width: 100%;
+    }
+  }
+
+  // =============================
+  // __top：「FEATURE I」ラベル
+  // =============================
+  &__top {
+    font-family: 'Marcellus', serif;
+    font-size: 1.8rem;
+    color: $primary-color;
+    letter-spacing: 0.1em;
+    margin: 0 0 12px;
+    line-height: 1;
+
+    @include mq(sp) {
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+
+      &::before,
+      &::after {
+        content: '';
+        display: block;
+        width: 40px;
+        height: 1px;
+        background-color: $primary-color;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  // =============================
+  // 区切り線（PCのみ）
+  // =============================
+  &__divider {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background-color: $primary-color;
+    margin: 12px auto 16px;
+
+    @include mq(sp) {
+      display: none;
+    }
+  }
+
+  // =============================
+  // __title：日本語見出し
+  // =============================
+  &__title {
+    font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+    font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+    color: $primary-color;
+    line-height: 1.7;
+    margin: 0 0 clamp(16px, 2vw, 24px);
+
+    @include mq(sp) {
+      font-size: 1.8rem;
+    }
+  }
+
+  // =============================
+  // __text：本文テキスト
+  // =============================
+  &__text {
+    font-family: '游ゴシック', 'Yu Gothic', 'Hiragino Sans', sans-serif;
+    font-size: 1.8rem;
+    color: $primary-color;
+    line-height: 2;
+    margin: 0;
+
+    @include mq(sp) {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+// =============================
+// Slick スライダー上書きスタイル（SP用）
+// =============================
+@include mq(tb) {
+  .slider {
+    .slick-list {
+      overflow: visible;
+    }
+
+    .slick-track {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .slick-slide {
+      height: auto;
+    }
+
+    .slick-slide:not(.slick-center) {
+      opacity: 0.5;
+      transition: opacity 0.4s ease;
+    }
+
+    .slick-center {
+      opacity: 1;
+    }
+  }
+}
+
+// =============================
+// フェードアニメーション（PC：slickのfade）
+// =============================
+@include mq(pc) {
+  .slider {
+    .slick-slide {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+
+      &.slick-current {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+  }
+}
+
+// =============================
+// js-inview アニメーション
+// =============================
+.js-inview {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+
+  &.is-inview {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 確認用（animation.js 実装後に削除）
+.js-inview {
+  opacity: 1 !important;
+  transform: none !important;
+}

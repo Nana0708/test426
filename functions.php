@@ -3,8 +3,8 @@
 function add_favicon()
 {
     $template_uri = get_template_directory_uri();
-    echo '<link rel="icon" type="image/x-icon" href="' . $template_uri . '/images/favicon.ico" />' . "\n";
-    echo '<link rel="apple-touch-icon" href="' . $template_uri . '/images/apple-touch-icon.png" />' . "\n";
+    echo '<link rel="icon" type="image/x-icon" href="' . $template_uri . '/src/img/favicon.ico" />' . "\n";
+    echo '<link rel="apple-touch-icon" href="' . $template_uri . '/src/img/apple-touch-icon.png" />' . "\n";
 }
 add_action('wp_head', 'add_favicon');
 add_action('admin_head', 'add_favicon'); // WordPress管理画面用
@@ -41,6 +41,14 @@ function script_init()
         '11.0.0'
     );
 
+    // Slick Slider CSS
+    wp_enqueue_style(
+        'slick-css',
+        'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css',
+        array(),
+        '1.8.1'
+    );
+
     wp_enqueue_style(
         'my-style',
         get_theme_file_uri('/css/style.css'),
@@ -57,43 +65,56 @@ function script_init()
         true
     );
 
+    // jQuery（WordPressに内蔵済み）
+    wp_enqueue_script('jquery');
+
+    // Slick Slider JS（jQueryに依存）
+    wp_enqueue_script(
+        'slick-js',
+        'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js',
+        array('jquery'),
+        '1.8.1',
+        true
+    );
+
     wp_enqueue_script(
         'hamburger-js',
-        get_theme_file_uri('/js/hamburger.js'),
+        get_theme_file_uri('/src/js/hamburger.js'),
         array(),
-        filemtime(get_theme_file_path('/js/hamburger.js')),
+        filemtime(get_theme_file_path('/src/js/hamburger.js')),
         true
     );
 
     wp_enqueue_script(
         'accordion-js',
-        get_theme_file_uri('/js/accordion.js'),
+        get_theme_file_uri('/src/js/accordion.js'),
         array(),
-        filemtime(get_theme_file_path('/js/accordion.js')),
+        filemtime(get_theme_file_path('/src/js/accordion.js')),
         true
     );
 
     wp_enqueue_script(
         'swiper-custom-js',
-        get_theme_file_uri('/js/swiper.js'),
+        get_theme_file_uri('/src/js/swiper.js'),
         array('swiper-js'),
-        filemtime(get_theme_file_path('/js/swiper.js')),
+        filemtime(get_theme_file_path('/src/js/swiper.js')),
         true
     );
 
     wp_enqueue_script(
         'animation-js',
-        get_theme_file_uri('/js/animation.js'),
+        get_theme_file_uri('/src/js/animation.js'),
         array(),
-        filemtime(get_theme_file_path('/js/animation.js')),
+        filemtime(get_theme_file_path('/src/js/animation.js')),
         true
     );
 
+    // main.jsはslick-jsに依存させる
     wp_enqueue_script(
         'main-js',
-        get_theme_file_uri('/js/main.js'),
-        array(),
-        filemtime(get_theme_file_path('/js/main.js')),
+        get_theme_file_uri('/src/js/main.js'),
+        array('slick-js'),
+        filemtime(get_theme_file_path('/src/js/main.js')),
         true
     );
 }
@@ -263,7 +284,7 @@ function register_salons_post_type()
         'public'             => true,
         'has_archive'        => true,
         'rewrite'            => array('slug' => 'salons'),
-        'menu_position'      => 6, // newsと被らない位置
+        'menu_position'      => 6,
         'supports'           => array('title', 'editor', 'thumbnail', 'custom-fields'),
         'show_in_rest'       => true,
     );
@@ -281,12 +302,9 @@ add_action('init', 'register_salons_post_type');
 // 店舗投稿ページ　タイトルを追加⇨店舗名を入力
 function change_title_placeholder( $title ) {
     $screen = get_current_screen();
-    
-    // 'shop'の部分を実際のカスタム投稿タイプのスラッグに変更
     if ( $screen->post_type == 'salons' ) {
         $title = '店舗名を入力';
     }
-    
     return $title;
 }
 add_filter( 'enter_title_here', 'change_title_placeholder' );

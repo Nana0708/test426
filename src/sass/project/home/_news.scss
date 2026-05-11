@@ -1,0 +1,170 @@
+@use "../../config/mixin" as *;
+@use "../../config/variable" as *;
+
+// ==========================================================
+// news
+// NEWSセクション（トップページ）
+// ==========================================================
+// style.scss に以下を追加してください：
+//   @use "components/news";
+// ==========================================================
+
+.news {
+    padding: 132px 0;
+  
+    @include mq(sp) {
+      padding: 20px 0 0;
+    }
+  
+    // ----------------------------------------------------------
+    // inner：横幅管理
+    // ----------------------------------------------------------
+    &__inner {
+      max-width: $content-width-l; // 1200px
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 60px;
+  
+      @include mq(sp) {
+        padding: 0 20px;
+      }
+    }
+  
+    // ----------------------------------------------------------
+    // head：見出し + PCボタンの横並びブロック
+    // ----------------------------------------------------------
+    &__head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+  
+    // ----------------------------------------------------------
+    // .preview-block（View Allボタン）
+    // PC：見出し横右寄せ（--pc のみ表示）
+    // SP：リスト下中央（--sp のみ表示）
+    // ----------------------------------------------------------
+    .preview-block {
+      display: flex;
+  
+      &--pc {
+        // PC：表示
+        @include mq(sp) {
+          display: none; // SP：非表示
+        }
+      }
+  
+      &--sp {
+        display: none; // PC：非表示
+  
+        @include mq(sp) {
+          display: flex;
+          justify-content: center;
+          margin-top: 32px;
+        }
+      }
+    }
+  
+    // ----------------------------------------------------------
+    // list：記事リスト
+    // ----------------------------------------------------------
+    &__list {
+      display: flex;
+      list-style: none;
+      margin-top: 40px;
+  
+      @include mq(sp) {
+        flex-direction: column;
+        // SP：全アイテムをborder-bottomで囲むため
+        // リストの上部に1本追加
+        border-top: 1px solid $accent-color;
+      }
+    }
+  
+    // ----------------------------------------------------------
+    // item：記事1件分
+    // PC：3等分 + border-right（最後除く）
+    // SP：border-bottom（全件・先頭〜末尾）
+    // ----------------------------------------------------------
+    &__item {
+      flex: 1;
+      padding: 0 20px;
+      border-right: 1px solid $accent-color;
+  
+      &:first-child {
+        padding-left: 0;
+      }
+  
+      &:last-child {
+        padding-right: 0;
+        border-right: none;
+      }
+  
+      @include mq(sp) {
+        padding: 20px 0;
+        border-right: none;
+        // SP：全件にborder-bottomを付与（最後の1件も含む）
+        border-bottom: 1px solid $accent-color;
+      }
+    }
+  
+    // ----------------------------------------------------------
+    // link：カード全体リンク
+    // ----------------------------------------------------------
+    &__link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+  
+      @include hover {
+        opacity: 0.7;
+      }
+    }
+  
+    // ----------------------------------------------------------
+    // date：投稿日
+    // ----------------------------------------------------------
+    &__date {
+      display: block;
+      font-size: clamp(1.2rem, 1.4vw, 1.4rem);
+      font-weight: bold;
+      color: $accent-color;
+      letter-spacing: 0.05em;
+  
+      @include mq(sp) {
+        font-size: 1.4rem;
+      }
+    }
+  
+    // ----------------------------------------------------------
+    // title：記事タイトル
+    // ----------------------------------------------------------
+    &__title {
+      font-size: clamp(1.4rem, 1.6vw, 1.6rem);
+      font-weight: bold;
+      color: $accent-color;
+      line-height: 1.7;
+      margin-top: 12px; // 日付との間
+    }
+  
+    // ----------------------------------------------------------
+    // cat：カテゴリ
+    // PC：頭だけ大文字（capitalize）
+    // SP：全て大文字（uppercase）
+    // ----------------------------------------------------------
+    &__cat {
+      display: block;
+      font-family: 'Marcellus', serif;
+      font-size: clamp(1.1rem, 1.2vw, 1.2rem);
+      color: $accent-color;
+      text-transform: capitalize; // PC：頭だけ大文字
+      margin-top: 16px; // タイトルとの間
+  
+      @include mq(sp) {
+        text-transform: uppercase; // SP：全て大文字
+      }
+    }
+  }
+.news-btn {
+    font-size: clamp(1.4rem, 1.5vw, 1.6rem);
+}

@@ -2,13 +2,6 @@
 @use "../config/variable" as *;
 
 
-
-.news-btn {
-    font-size: clamp(1.4rem, 1.5vw, 1.6rem);
-}
-
-
-
 .header {
   position: fixed;
   top: 48px;

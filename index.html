@@ -18,9 +18,7 @@
   </head>
 <body>
 
-<!-- =============================
-  header
-============================= -->
+
 <header class="header">
   <div class="header__inner">
 
@@ -81,8 +79,6 @@
 
   </div><!-- /.header__inner -->
 </header>
-
-
 <!-- =============================
   SP ドロワーメニュー
 ============================= -->
@@ -128,6 +124,7 @@
 <div class="drawer-overlay" aria-hidden="true"></div>
 
 <main>
+
 <div class="fv">
     <div class="fv__inner">
       <div class="fv__text-wrapper">
@@ -135,7 +132,259 @@
         </div>
     </div>
 </div>
+  <!-- news セクション -->
+<section class="news">
+  <div class="news__inner">
+
+    <!-- 見出し + View All ボタン（PC：横並び） -->
+    <div class="news__head">
+      <!-- 見出し（既存コンポーネント） -->
+      <div class="c-section-title">
+        <p class="c-section-title__bg capitalize" aria-hidden="true">news</p>
+        <h2 class="c-section-title__main capitalize">news</h2>
+        <p class="c-section-title__sub">お知らせ</p>
+      </div>
+
+      <!-- View All ボタン（PC：見出し横右寄せ / SP：非表示） -->
+      <div class="preview-block preview-block--pc">
+        <a href="#" class="c-btn news-btn">View All</a>
+      </div>
+    </div>
+
+    <!-- 記事リスト -->
+    <!-- WordPress化時：<?php if ( $news_query->have_posts() ) : ?> -->
+    <ul class="news__list">
+
+      <!-- 記事カード × 3（WordPress化時はループ内に1件分だけ残す） -->
+      <!-- WordPress化時：<?php while ( $news_query->have_posts() ) : $news_query->the_post(); ?> -->
+      <li class="news__item">
+        <a href="#" class="news__link">
+          <time class="news__date" datetime="2024-02-14">2024.02.14</time>
+          <p class="news__title">タイトルが入ります。タイトルが入ります。</p>
+          <!-- WordPress化時：<span class="news__cat">カスタムタクソノミー名</span> -->
+          <span class="news__cat">Category</span>
+        </a>
+      </li>
+
+      <li class="news__item">
+        <a href="#" class="news__link">
+          <time class="news__date" datetime="2024-02-14">2024.02.14</time>
+          <p class="news__title">タイトルが入ります。タイトルが入ります。</p>
+          <span class="news__cat">Category</span>
+        </a>
+      </li>
+
+      <li class="news__item">
+        <a href="#" class="news__link">
+          <time class="news__date" datetime="2024-02-14">2024.02.14</time>
+          <p class="news__title">タイトルが入ります。タイトルが入ります。</p>
+          <span class="news__cat">Category</span>
+        </a>
+      </li>
+      <!-- WordPress化時：<?php endwhile; wp_reset_postdata(); ?> -->
+
+    </ul>
+    <!-- WordPress化時：<?php endif; ?> -->
+
+    <!-- View All ボタン（SP：リスト下・中央 / PC：非表示） -->
+    <div class="preview-block preview-block--sp">
+      <a href="#" class="c-btn news-btn">View All</a>
+    </div>
+
+  </div><!-- /.news__inner -->
+</section><!-- /.news -->
+
+<!-- ============================================================
+  CONCEPT セクション
+  ============================================================ -->
+  <section class="concept">
+
+    <!-- 上段：左テキスト / 右メイン画像 -->
+    <div class="concept__top">
+      <div class="concept__top-text">
+        <div class="c-section-title">
+          <p class="c-section-title__bg capitalize" aria-hidden="true">concept</p>
+          <h2 class="c-section-title__main uppercase">concept</h2>
+          <p class="c-section-title__sub">お知らせ</p>
+        </div>
+        <h3 class="concept__catch">
+          <!-- PC：1行 -->
+          <span class="concept__catch--pc">洗練されたワンランク上の女性を目指す</span>
+          <!-- SP：非表示（下段で表示） -->
+        </h3>
+      </div>
   
+      <div class="concept__main-img-wrap">
+        <img
+          src="./img/top-concept_01-pc.webp"
+          alt="施術中の様子"
+          width="780"
+          height="520"
+          loading="lazy"
+          class="concept__main-img"
+        >
+      </div>
+    </div>
+  
+    <!-- SP専用：メイン画像（全幅） -->
+    <div class="concept__sp-img-wrap">
+      <img
+        src="./img/top-concept_01-sp.webp"
+        alt="施術中の様子"
+        width="750"
+        height="500"
+        loading="lazy"
+        class="concept__sp-img"
+      >
+    </div>
+  
+    <!-- SP専用：見出し＋キャッチ＋サムネイル行 -->
+    <div class="concept__sp-head">
+      <div class="concept__sp-head-inner">
+        <div class="concept__sp-head-left">
+          <div class="concept__heading concept__heading--sp">
+            <h2 class="concept__heading-en">CONCEPT</h2>
+            <p class="concept__heading-ja">コンセプト</p>
+          </div>
+          <p class="concept__catch concept__catch--sp">
+            洗練された<br>ワンランク上の<br>女性を目指す
+          </p>
+        </div>
+        <div class="concept__thumb-wrap">
+          <picture>
+            <source media="(max-width: 767px)" srcset="./img/top-concept_02-sp.webp">
+            <img
+              src="./img/top-concept_02-pc.webp"
+              alt="サロン内観"
+              width="120"
+              height="160"
+              loading="lazy"
+              class="concept__thumb-img"
+            >
+          </picture>
+        </div>
+      </div>
+    </div>
+  
+    <!-- 下段：左サブ画像 / 右本文＋ViewMore -->
+    <div class="concept__bottom">
+      <div class="concept__inner">
+        <div class="concept__bottom-grid">
+  
+          <div class="concept__sub-img-wrap">
+            <picture>
+              <source media="(max-width: 767px)" srcset="./img/top-concept_02-sp.webp">
+              <img
+                src="./img/top-concept_02-pc.webp"
+                alt="サロン内観"
+                width="400"
+                height="380"
+                loading="lazy"
+                class="concept__sub-img"
+              >
+            </picture>
+          </div>
+  
+          <div class="concept__body-col">
+            <p class="concept__desc">
+              バレンタインローズでは脱毛の完了はゴールではなく、<br>
+              あくまでもお客様がワンランク上の女性に近づくための<br>
+              第一歩と考えています。<br>
+              「洗練されたワンランク上の女性を目指す」<br>
+              というコンセプトのもと、<br>
+              スタッフが徹底したホスピタリティによりお客様をおもてなし、<br>
+              脱毛を通してお客様が理想とする女性像に導きます。
+            </p>
+            <div class="concept__link-wrap">
+              <a href="#" class="concept__link">
+                <span class="concept__link-text">View More</span>
+                <span class="concept__link-line" aria-hidden="true"></span>
+              </a>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE -->
+<section class="feature">
+  <div class="feature__inner">
+    <div class="feature__head">
+     <div class="c-section-title">
+          <p class="c-section-title__bg capitalize" aria-hidden="true">feature</p>
+          <h2 class="c-section-title__main uppercase">feature</h2>
+        </div>
+    <div class="feature__left js-feature__left u-lg-none js-inview">
+      <div class="feature__guide-wrap js-feature__guide-wrap">
+        <div class="feature__guide js-feature__guide active">
+          <span class="feature__guide-number">Ⅰ</span>
+          <p class="feature__guide-text">高性能の機械を導入</p>  
+        </div>
+        <div class="feature__guide js-feature__guide">
+          <span class="feature__guide-number">Ⅱ</span>
+          <p class="feature__guide-text">痛みを最小限まで抑えた施術</p>  
+        </div>
+        <div class="feature__guide js-feature__guide">
+          <span class="feature__guide-number">Ⅲ</span>
+          <p class="feature__guide-text">1回の施術は<br>入店～退店まで約30分</p>  
+        </div>
+      </div>
+    </div>
+    <div class="slider js-slider js-inview">
+      <div class="slider__item">
+        <div class="slider__content">
+          <div class="slider__img-wrap">
+            <picture>
+              <source srcset="<?php echo get_template_directory_uri(); ?>/images/top/feature_01-pc.jpg" media="
+              (min-width: 1025px)" width="315" height="275">
+              <img src="<?php echo get_template_directory_uri(); ?>/images/top/feature_01-sp.jpg" alt="腕に脱毛機械を当てている様子" class="slider__img" width="450" height="630">
+            </picture>    
+          </div>
+          <div class="slider__right">
+            <p class="slider__top">FEATURE&nbsp;I</p>
+            <p class="slider__title">高性能の機械を導入</p>
+            <p class="slider__text">美肌に特化したフィルターを使用し<br>真皮層に働きかけることで<br>コラーゲンの生成を促進させます。<br>また、むくみの原因である溜まった<br>リンパを流すことで顔のむくみを取り、<br>若々しいお肌と小顔効果が期待できます。</p>
+          </div>  
+        </div>
+      </div>
+      <div class="slider__item">
+        <div class="slider__content">
+          <div class="slider__img-wrap">
+            <picture>
+              <source srcset="<?php echo get_template_directory_uri(); ?>/images/top/feature_02-pc.jpg" media="
+              (min-width: 1025px)" width="315" height="275">
+              <img src="<?php echo get_template_directory_uri(); ?>/images/top/feature_02-sp.jpg" alt="女性スタッフが笑顔で応対している様子" class="slider__img" width="450" height="630">
+            </picture>    
+          </div>
+          <div class="slider__right">
+            <p class="slider__top">FEATURE&nbsp;Ⅱ</p>
+            <p class="slider__title">痛みを最小限まで<br>抑えた施術</p>
+            <p class="slider__text">毛質・毛量や脱毛箇所などに合わせて<br>オーダーメイドの脱毛プランを作成し、<br>メンズ専用の脱毛器を使用して施術します。</p>
+          </div>  
+        </div>
+      </div>
+      <div class="slider__item">
+        <div class="slider__content">
+          <div class="slider__img-wrap">
+            <picture>
+              <source srcset="<?php echo get_template_directory_uri(); ?>/images/top/feature_03-pc.jpg" media="
+              (min-width: 1025px)" width="315" height="275">
+              <img src="<?php echo get_template_directory_uri(); ?>/images/top/feature_03-sp.jpg" alt="受付の様子" class="slider__img" width="450" height="630">
+            </picture>    
+          </div>
+          <div class="slider__right">
+            <p class="slider__top">FEATURE&nbsp;Ⅲ</p>
+            <p class="slider__title">1回の施術は<br>入店～退店まで約30分</p>
+            <p class="slider__text">施術自体は15分程度。<br>初回はカウンセリングもあるので<br>多少お時間をいただきますが、<br>2回目以降は薄化粧で来ていただくと、<br>入店から退店まで30分弱で済みます。</p>
+          </div>  
+        </div>
+      </div>
+
+    </div>        
+  </div>
+</section>
 
 
 

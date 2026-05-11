@@ -1,0 +1,297 @@
+@use "../../config/mixin" as *;
+@use "../../config/variable" as *;
+
+
+.concept {
+  background-color: $bg-color;
+  padding-top: 120px;
+
+  @include mq(sp) {
+    padding-top: 0;
+  }
+
+  // ============================================================
+  // 【共通】__inner（横幅管理）
+  // ============================================================
+  &__inner {
+    max-width: $content-width-xl;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 5vw, 80px);
+  }
+
+  // ============================================================
+  // 上段：左テキスト / 右メイン画像（PCのみ表示）
+  // ============================================================
+  &__top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    max-width: $content-width-xl;
+    margin: 0 auto;
+
+    @include mq(sp) {
+      display: none;
+    }
+  }
+
+  &__top-text {
+    padding: 0 clamp(24px, 4vw, 80px);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  // メイン画像（右端まで広がる）
+  &__main-img-wrap {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+  }
+
+  &__main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  // ============================================================
+  // SP専用：メイン画像（全幅）
+  // ============================================================
+  &__sp-img-wrap {
+    display: none;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+
+    @include mq(sp) {
+      display: block;
+    }
+  }
+
+  &__sp-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  // ============================================================
+  // SP専用：見出し＋キャッチ＋サムネイル横並び行
+  // ============================================================
+  &__sp-head {
+    display: none;
+
+    @include mq(sp) {
+      display: block;
+      padding: 24px 16px 0;
+    }
+  }
+
+  &__sp-head-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  &__sp-head-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  // サムネイル（SP用）
+  &__thumb-wrap {
+    width: 100px;
+    flex-shrink: 0;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+  }
+
+  &__thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  // ============================================================
+  // 見出し共通
+  // ============================================================
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &--sp {
+      // SP用見出し（スタイルは共通のまま）
+    }
+  }
+
+  &__heading-en {
+    font-family: 'Marcellus', Georgia, serif;
+    font-size: clamp(3.2rem, 4vw, 5.6rem);
+    color: $primary-color;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    margin: 0;
+
+    @include mq(sp) {
+      font-size: 3.2rem;
+    }
+  }
+
+  &__heading-ja {
+    font-family: '游ゴシック', 'Yu Gothic', 'Hiragino Sans', sans-serif;
+    font-size: 1.2rem;
+    color: $primary-color;
+    letter-spacing: 0.2em;
+    margin: 0;
+  }
+
+  // ============================================================
+  // キャッチコピー
+  // ============================================================
+  &__catch {
+    font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+    color: $primary-color;
+    line-height: 1.9;
+    letter-spacing: 0.12em;
+    margin: 0;
+
+    // PC版（__top内）
+    &--pc {
+      font-size: clamp(1.8rem, 2vw, 2.8rem);
+      display: block;
+    }
+
+    // SP版（__sp-head内）
+    &--sp {
+      font-size: 1.8rem;
+      display: block;
+    }
+  }
+
+  // ============================================================
+  // 下段：左サブ画像 / 右本文＋ViewMore（PC:2カラム / SP:非表示の画像は隠す）
+  // ============================================================
+  &__bottom {
+    margin-top: 60px;
+
+    @include mq(sp) {
+      margin-top: 24px;
+    }
+  }
+
+  &__bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 clamp(24px, 4vw, 60px);
+    align-items: start;
+
+    @include mq(sp) {
+      grid-template-columns: 1fr;
+      gap: 20px 0;
+    }
+  }
+
+  // サブ画像（PCの下段左・SPは非表示）
+  &__sub-img-wrap {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+
+    @include mq(sp) {
+      display: none; // SPはthumb-wrapで代替表示済み
+    }
+  }
+
+  &__sub-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  // ============================================================
+  // 本文
+  // ============================================================
+  &__body-col {
+    display: flex;
+    flex-direction: column;
+    padding-top: 8px;
+  }
+
+  &__desc {
+    font-family: '游ゴシック', 'Yu Gothic', 'Hiragino Sans', sans-serif;
+    color: $accent-color;
+    font-size: 1.8rem;
+    line-height: 2.2;
+    letter-spacing: 0.08em;
+    margin: 0;
+
+    @include mq(sp) {
+      font-size: 1.6rem;
+      br { display: none; }
+    }
+  }
+
+  // ============================================================
+  // View More リンク
+  // ============================================================
+  &__link-wrap {
+    margin-top: 32px;
+    display: flex;
+    justify-content: flex-end;
+
+    @include mq(sp) {
+      margin-top: 20px;
+    }
+  }
+
+  &__link {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    text-decoration: none;
+    font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+    color: $accent-color;
+    font-size: 1.8rem;
+    letter-spacing: 0.12em;
+
+    @include hover {
+      .concept__link-line {
+        width: 120px;
+      }
+    }
+  }
+
+  &__link-text {
+    display: block;
+  }
+
+  &__link-line {
+    display: block;
+    width: 60px;
+    height: 1px;
+    background-color: $accent-color;
+    position: relative;
+    transition: width 0.4s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+      width: 6px;
+      height: 6px;
+      border-top: 1px solid $accent-color;
+      border-right: 1px solid $accent-color;
+    }
+  }
+}

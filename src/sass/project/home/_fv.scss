@@ -32,7 +32,6 @@
   &__text-wrapper {
     position: absolute;
     top: 50%;
-    left: clamp(40px, 8vw, 120px);
     transform: translateY(-50%);
   
     // フェードイン
