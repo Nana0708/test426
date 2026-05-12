@@ -1,2 +1,200 @@
+
 @use "../../config/mixin" as *;
 @use "../../config/variable" as *;
+
+
+.faq {
+  background-color: $bg-color;
+  padding: 120px 0;
+
+  @include mq(sp) {
+    padding: 60px 0;
+  }
+
+  // ----------------------------------------
+  // __inner
+  // ----------------------------------------
+  &__inner {
+    max-width: $content-width-l;
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 0;
+
+    @include mq(sp) {
+      padding-inline: 30px;
+    }
+  }
+
+  // ----------------------------------------
+  // __list
+  // アコーディオン全体：__inner(1200px) の左端から60px右にオフセット
+  // ----------------------------------------
+  &__list {
+    margin-top: clamp(32px, 5vw, 56px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-left: 60px;
+
+    @include mq(sp) {
+      padding-left: 0;
+    }
+  }
+
+  // ----------------------------------------
+  // __item
+  // ----------------------------------------
+  &__item {
+    background-color: $bg-color-sub;
+  }
+
+  // ----------------------------------------
+  // __question（ボタン）
+  // align-items: baseline で Q と質問テキストのベースラインを揃える
+  // __icon は position: absolute で右端固定、padding-right でその分の空きを確保
+  // ----------------------------------------
+  &__question {
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 37px 40px 37px 20px; // 右40px = アイコン幅16px + 右余白12px + 余裕
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    position: relative;
+
+    @include mq(sp) {
+      padding: 17px 36px 17px 16px;
+      gap: 10px;
+    }
+
+    @include hover {
+      outline: 2px solid $primary-color;
+      outline-offset: -2px;
+    }
+  }
+
+  // ----------------------------------------
+  // __label（Q / A 共通）
+  // ----------------------------------------
+  &__label {
+    font-family: 'Marcellus', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: $primary-color;
+    flex-shrink: 0;
+    line-height: 1;
+
+    &--a {
+      // A ラベルを回答テキストの1行目（padding-top: 20px 分）と揃える
+      align-self: flex-start;
+      margin-top: 20px;
+
+      @include mq(sp) {
+        margin-top: 12px;
+      }
+    }
+  }
+
+  // ----------------------------------------
+  // __question-text
+  // ----------------------------------------
+  &__question-text {
+    flex: 1;
+    font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: $primary-color;
+    line-height: 1.8;
+    letter-spacing: 0.08em;
+
+    @include mq(sp) {
+      font-size: 1.4rem;
+    }
+  }
+
+  // ----------------------------------------
+  // __icon（▼ / ▲）
+  // position: absolute で __question 右端に固定
+  // right: 12px = 三角右端からボタン右端まで12px
+  // ----------------------------------------
+  &__icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 7px solid $accent-color;
+      transition: transform 0.3s ease;
+    }
+
+    .faq__item.is-open & {
+      &::before {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  // ----------------------------------------
+  // __answer（アコーディオン本体）
+  // ----------------------------------------
+  &__answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+
+    .faq__item.is-open & {
+      max-height: 600px;
+    }
+  }
+
+  // ----------------------------------------
+  // __answer-inner
+  // Q行と左右の余白を揃える
+  // ----------------------------------------
+  &__answer-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 0 40px 37px 20px;
+
+    @include mq(sp) {
+      padding: 0 16px 20px 16px;
+      gap: 10px;
+    }
+  }
+
+  // ----------------------------------------
+  // __answer-text
+  // ----------------------------------------
+  &__answer-text {
+    flex: 1;
+    font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: $primary-color;
+    line-height: 2;
+    letter-spacing: 0.08em;
+    padding-top: 20px;
+    margin: 0;
+
+    @include mq(sp) {
+      font-size: 1.4rem;
+      padding-top: 12px;
+    }
+  }
+}

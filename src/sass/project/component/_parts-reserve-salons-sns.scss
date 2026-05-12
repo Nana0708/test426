@@ -1,0 +1,201 @@
+@use "../../config/mixin" as *;
+@use "../../config/variable" as *;
+
+
+
+// ============================================================
+// parts-reserve
+// ============================================================
+
+.parts-reserve {
+  width: 100%;
+  margin: 0;
+
+  &__link {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    text-decoration: none;
+
+    @include mq(sp) {
+      height: 200px;
+    }
+  }
+
+  // 背景画像ラッパー
+  &__bg-wrapper {
+    position: absolute;
+    inset: 0;
+    max-width: 100%;
+    width: 100%;
+    aspect-ratio: auto;
+    overflow: hidden;
+  }
+
+  // 背景画像本体
+  &__bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  // オーバーレイ
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background-color: #464646;
+    opacity: 0.8;
+    transition: opacity 0.4s ease;
+  }
+
+  // テキスト中央寄せ
+  &__inner {
+    position: absolute;
+    inset: 0;
+    max-width: $content-width-xl;
+    width: 100%;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // ホバー: オーバーレイを薄くする（タッチパネル無効）
+  @include hover {
+    .parts-reserve__overlay {
+      opacity: 0.5;
+    }
+  }
+}
+
+
+// ============================================================
+// parts-salons-sns（2カラムラッパー）
+// ============================================================
+
+.parts-salons-sns {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  margin: 0;
+
+  // 水平ボーダーは下のみ（PCのみ）
+  border-bottom: 1px solid $primary-color;
+
+  @include mq(sp) {
+    flex-direction: column;
+    border-bottom: none;
+  }
+}
+
+
+// ============================================================
+// parts-salons
+// ============================================================
+
+.parts-salons {
+  flex: 1;
+  position: relative;
+  margin: 0;
+
+  // PC: 右側に縦セパレーター線
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 81%;
+    background-color: $primary-color;
+
+    @include mq(sp) {
+      display: none;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 321px;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+
+    @include mq(sp) {
+      height: 200px;
+      border-bottom: 1px solid $primary-color;
+    }
+  }
+
+  &__inner {
+    max-width: $content-width-xl;
+    width: 100%;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // ホバー: opacityを下げる（タッチパネル無効）
+  @include hover {
+    .parts-salons__link {
+      opacity: 0.6;
+    }
+  }
+}
+
+
+// ============================================================
+// parts-sns
+// ============================================================
+
+.parts-sns {
+  flex: 1;
+  margin: 0;
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 321px;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+
+    @include mq(sp) {
+      height: 200px;
+      border-bottom: 1px solid $primary-color;
+    }
+  }
+
+  &__inner {
+    max-width: $content-width-xl;
+    width: 100%;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // c-section-title が inline-block のため SP では block に上書きして__subを中央揃え
+    .c-section-title {
+      @include mq(sp) {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+
+  // ホバー: opacityを下げる（タッチパネル無効）
+  @include hover {
+    .parts-sns__link {
+      opacity: 0.6;
+    }
+  }
+}
