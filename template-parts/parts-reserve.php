@@ -5,7 +5,7 @@
  */
 ?>
 
-<section class="parts-reserve">
+<div class="parts-reserve">
   <a class="parts-reserve__link" href="<?php echo esc_url( home_url('/reserve') ); ?>">
     <div class="parts-reserve__bg-wrapper">
       <img
@@ -26,4 +26,4 @@
       </div>
     </div>
   </a>
-</section>
+</div>

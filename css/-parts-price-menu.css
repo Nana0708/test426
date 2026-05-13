@@ -1,0 +1,130 @@
+@charset "UTF-8";
+.parts-price-menu__nav {
+  margin-top: 60px;
+}
+.parts-price-menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  -moz-column-gap: 0;
+       column-gap: 0;
+}
+@media screen and (max-width: 765px) {
+  .parts-price-menu__list {
+    grid-template-columns: 1fr;
+  }
+}
+.parts-price-menu__item {
+  border-top: 1px solid #ca7f13;
+}
+.parts-price-menu__item:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1;
+}
+.parts-price-menu__item:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1;
+  border-left: 1px solid #ca7f13;
+}
+.parts-price-menu__item:nth-child(3) {
+  grid-column: 1;
+  grid-row: 2;
+}
+.parts-price-menu__item:nth-child(4) {
+  grid-column: 2;
+  grid-row: 2;
+  border-left: 1px solid #ca7f13;
+}
+.parts-price-menu__item:nth-child(5) {
+  grid-column: 1;
+  grid-row: 3;
+}
+@media screen and (max-width: 765px) {
+  .parts-price-menu__item:nth-child(1), .parts-price-menu__item:nth-child(2), .parts-price-menu__item:nth-child(3), .parts-price-menu__item:nth-child(4), .parts-price-menu__item:nth-child(5) {
+    grid-column: auto;
+    grid-row: auto;
+    border-left: none;
+    border-bottom: none;
+  }
+  .parts-price-menu__item {
+    border-bottom: 1px solid #ca7f13;
+  }
+}
+@media screen and (max-width: 765px) {
+  .parts-price-menu__item--full {
+    grid-column: 1/-1;
+  }
+}
+.parts-price-menu__item--dummy {
+  grid-column: 2;
+  grid-row: 3;
+  border-top: 1px solid #ca7f13;
+  border-left: 1px solid #ca7f13;
+  border-bottom: none;
+}
+@media screen and (max-width: 765px) {
+  .parts-price-menu__item--dummy {
+    display: none;
+  }
+}
+.parts-price-menu__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding-inline: clamp(1.6rem, 2.5vw, 3.2rem);
+  text-decoration: none;
+  color: #ca7f13;
+  transition: opacity 0.25s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .parts-price-menu__link:hover {
+    opacity: 0.55;
+  }
+}
+@media screen and (max-width: 765px) {
+  .parts-price-menu__link {
+    height: 80px;
+    padding-inline: 0;
+  }
+}
+.parts-price-menu__name {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(0.8rem, 1.2vw, 1.6rem);
+}
+.parts-price-menu__name-en {
+  font-family: "Marcellus", serif;
+  font-size: 4.8rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #ca7f13;
+}
+@media screen and (max-width: 765px) {
+  .parts-price-menu__name-en {
+    font-size: 3.6rem;
+  }
+}
+.parts-price-menu__name-ja {
+  font-family: "游明朝", "Yu Mincho", Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #ca7f13;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+@media screen and (max-width: 765px) {
+  .parts-price-menu__name-ja {
+    font-size: 1.4rem;
+  }
+}
+.parts-price-menu__arrow {
+  font-size: 1.8rem;
+  line-height: 1;
+  color: #ca7f13;
+  flex-shrink: 0;
+  margin-left: 1.2rem;
+}/*# sourceMappingURL=-parts-price-menu.css.map */

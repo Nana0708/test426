@@ -1,0 +1,160 @@
+@use "../../config/mixin" as *;
+@use "../../config/variable" as *;
+
+.parts-price-menu {
+// ---------------------------------------------------------
+// __nav：メニュー全体のナビゲーション wrapper
+// ----------------------------------------------------------
+&__nav {
+  margin-top: 60px;
+}
+
+// ----------------------------------------------------------
+// __list：2列グリッド（PC） → 1列（SP）
+// ----------------------------------------------------------
+&__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  // 縦の区切り線（中央）
+  column-gap: 0;
+
+  @include mq(sp) {
+    grid-template-columns: 1fr;
+  }
+}
+
+  // ----------------------------------------------------------
+  // __item：各メニュー行
+  // ----------------------------------------------------------
+  // グリッド配置（PC）
+  // 行1: Body(左)  / V-line(右)
+  // 行2: Custom(左) / Set(右)
+  // 行3: All(左)   / dummy(右・縦線のみ)
+  // ※ 外枠（最上線・最下線）なし。各行の border-top のみ
+  // ----------------------------------------------------------
+&__item {
+  border-top: 1px solid $primary-color;
+
+  // Body：1行目左
+  &:nth-child(1) { grid-column: 1; grid-row: 1; }
+  // V-line：1行目右
+  &:nth-child(2) { grid-column: 2; grid-row: 1; border-left: 1px solid $primary-color; }
+  // Custom：2行目左
+  &:nth-child(3) { grid-column: 1; grid-row: 2; }
+  // Set：2行目右
+  &:nth-child(4) { grid-column: 2; grid-row: 2; border-left: 1px solid $primary-color; }
+  // All：3行目左のみ（下線なし）
+  &:nth-child(5) { grid-column: 1; grid-row: 3; }
+
+  @include mq(sp) {
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3),
+    &:nth-child(4),
+    &:nth-child(5) {
+      grid-column: auto;
+      grid-row: auto;
+      border-left: none;
+      border-bottom: none;
+    }
+    // SP：全アイテムに下線
+    border-bottom: 1px solid $primary-color;
+  }
+
+  // --  Modifier: --full（All = 3行目左列）  --
+  &--full {
+    @include mq(sp) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  // --  Modifier: --dummy（3行目右列・縦線のみ）  --
+  &--dummy {
+    grid-column: 2;
+    grid-row: 3;
+    border-top: 1px solid $primary-color; // All と同じ行の上線
+    border-left: 1px solid $primary-color; // 縦区切り線
+    border-bottom: none;
+
+    @include mq(sp) {
+      display: none;
+    }
+  }
+}
+
+// ----------------------------------------------------------
+// __link：クリック領域・Flexbox で左右に配置
+// ----------------------------------------------------------
+&__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding-inline: clamp(1.6rem, 2.5vw, 3.2rem);
+  text-decoration: none;
+  color: $primary-color;
+  transition: opacity 0.25s ease;
+
+  @include hover {
+    opacity: 0.55;
+  }
+
+  @include mq(sp) {
+    height: 80px;
+    padding-inline: 0;
+  }
+}
+
+// ----------------------------------------------------------
+// __name：英字 + 日本語のセット
+// ----------------------------------------------------------
+&__name {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(0.8rem, 1.2vw, 1.6rem);
+}
+
+// 英字メニュー名
+&__name-en {
+  font-family: 'Marcellus', serif;
+  font-size: 4.8rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: $primary-color;
+
+  @include mq(sp) {
+    font-size: 3.6rem;
+  }
+}
+
+// 日本語サブテキスト
+&__name-ja {
+  font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: $primary-color;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+
+  @include mq(sp) {
+    font-size: 1.4rem;
+  }
+}
+
+// ----------------------------------------------------------
+// __arrow：Font Awesome fa-chevron-right（細め）
+// ※ font-family は FA が自動付与するため指定不要
+// ----------------------------------------------------------
+&__arrow {
+  font-size: 1.8rem;
+  line-height: 1;
+  color: $primary-color;
+  flex-shrink: 0;
+  margin-left: 1.2rem;
+}
+}

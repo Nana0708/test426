@@ -1,0 +1,345 @@
+@use "../../config/mixin" as *;
+@use "../../config/variable" as *;
+
+
+.p-concept-about {
+  background-color: $bg-color-sub;
+  padding: clamp(48px, 8vw, 80px) 0;
+}
+
+.p-concept-about__inner {
+  margin-inline: auto;
+  max-width: $content-width-l;
+  padding-inline: 120px;
+
+  @include mq(sp) {
+    padding-inline: 20px;
+  }
+}
+
+// --------------------------------------------------
+// 上エリア：見出し（左）+ 画像（右）の2カラム
+// PC：grid 2:3 / SP：1カラム縦積み（画像→見出し順）
+// --------------------------------------------------
+.p-concept-about__visual {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 0;
+  align-items: center;
+  margin-bottom: clamp(24px, 4vw, 48px);
+
+  @include mq(sp) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+}
+
+// 画像ラッパー：右カラム
+.p-concept-about__image-wrap {
+  max-width: 100%;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+
+  @include mq(sp) {
+    order: 1;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.p-concept-about__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+// 見出し：左カラム（「の」が画像に少しかかるよう右にはみ出す）
+.p-concept-about__heading {
+  font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+  font-size: clamp(2.4rem, 3vw, 4rem);
+  font-weight: 400;
+  color: $primary-color;
+  line-height: 1.8;
+  letter-spacing: 0.08em;
+  margin: 0;
+  margin-right: -1.5em; // 行末の「の」が画像に被る分だけ右にはみ出す
+
+  @include mq(sp) {
+    order: 2;
+    font-size: 1.8rem;
+    line-height: 1.7;
+    margin-right: 0;
+  }
+}
+
+// --------------------------------------------------
+// 下エリア：テキスト
+// --------------------------------------------------
+.p-concept-about__body {
+  font-family: '游ゴシック', 'Yu Gothic', 'Hiragino Sans', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: $primary-color;
+  line-height: 2;
+  letter-spacing: 0.1em;
+
+  @include mq(sp) {
+    font-size: 1.4rem;
+    line-height: 1.9;
+  }
+}
+
+
+
+.p-concept-sns {
+  background-color: $bg-color;
+  padding-block: 120px;
+
+  @include mq(sp) {
+    padding-block: 60px;
+  }
+
+  // ----------------------------------------
+  // __inner
+  // コンテンツ幅：$content-width-l（1200px）を使い
+  // padding で実質 1080px に絞る
+  // ----------------------------------------
+  &__inner {
+    margin-inline: auto;
+    max-width: $content-width-l; // 1200px
+    padding-inline: clamp(30px, 5vw, 60px);
+    // ↑ PC: 左右 60px padding → 実質コンテンツ幅 1080px
+    //   clamp で 1200px 未満の画面でも比例縮小
+
+    @include mq(sp) {
+      padding-inline: 30px;
+    }
+  }
+
+  // ----------------------------------------
+  // __title
+  // 見出しブロック：コンテナ左端から 60px 外側にはみ出す
+  // → margin-left: -60px で左にずらす
+  // ----------------------------------------
+  &__title {
+    margin-bottom: 60px;
+    margin-left: -60px; // コンテナ左端より 60px 外側へ
+
+    @include mq(sp) {
+      margin-left: 0; // SP では通常位置
+      margin-bottom: clamp(32px, 6vw, 60px);
+    }
+  }
+
+  // ----------------------------------------
+  // __feed
+  // Smash Balloon の出力ラッパー
+  // グリッドの見た目はプラグイン設定側で制御
+  // ----------------------------------------
+  &__feed {
+    width: 100%;
+    margin-bottom: 60px;
+
+    @include mq(sp) {
+      margin-bottom: clamp(32px, 6vw, 60px);
+    }
+  }
+
+  // ----------------------------------------
+  // __btn-wrap
+  // ボタンを中央寄せ
+  // ----------------------------------------
+  &__btn-wrap {
+    @include flex(center, center);
+  }
+
+  // ----------------------------------------
+  // __btn
+  // .c-btn / .c-btn--icon を継承しつつ上書き
+  // ----------------------------------------
+  &__btn {
+    font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+    font-size: 2rem; // 20px（html: font-size: 62.5% → 1rem = 10px）
+
+    @include mq(sp) {
+      font-size: clamp(1.6rem, 4vw, 2rem);
+    }
+
+    @include hover {
+      background-color: $white;
+      color: $accent-color-sub;
+      outline: 2px solid $accent-color-sub;
+      outline-offset: -2px;
+    }
+  }
+}
+
+
+
+.p-concept-company {
+  background-color: $bg-color;
+  padding-bottom: 144px;
+
+  @include mq(sp) {
+    padding-bottom: 120px;
+    padding-top: 120px;
+  }
+
+  // ----------------------------------------
+  // __inner
+  // コンテンツ幅: $content-width-l (1200px) 使用
+  // 実コンテンツ幅 1080px = 1200px から左右 60px 差し引き
+  // 見出しは左に 60px はみ出し → inner を左 60px 広げて調整
+  // ----------------------------------------
+  &__inner {
+    max-width: $content-width-l; // 1200px
+    width: 100%;
+    margin-inline: auto;
+    // PC: padding なし（左右余白はコンテンツ幅で制御）
+    padding-inline: 0;
+
+    @include mq(sp) {
+      padding-inline: 16px;
+    }
+  }
+
+  // ----------------------------------------
+  // 見出しエリア
+  // PC: innerより60px左にはみ出す
+  // ----------------------------------------
+  &__title {
+    margin-left: -60px;
+    margin-bottom: 51px;
+
+    @include mq(sp) {
+      margin-left: 0;
+      margin-bottom: 32px;
+    }
+  }
+
+  // ----------------------------------------
+  // メイン画像
+  // PC: 1080/540 / SP: 343/200
+  // ----------------------------------------
+  &__image-wrap {
+    max-width: 1080px;
+    width: 100%;
+    aspect-ratio: 1080 / 540;
+    overflow: hidden;
+    margin-inline: auto;
+    margin-bottom: 60px;
+
+    @include mq(sp) {
+      aspect-ratio: 343 / 200;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  // ----------------------------------------
+  // テーブルラッパー
+  // ----------------------------------------
+  &__table-wrap {
+    max-width: 1080px;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  // ----------------------------------------
+  // dl テーブル
+  // PC: 左列・右列を横に並べる2カラム構造
+  //     → __col-left / __col-right で列を分け、
+  //       各列内で __row を縦積みにする
+  // SP: 1カラム縦積み
+  // ----------------------------------------
+  &__table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0;
+    padding: 0;
+
+    @include mq(sp) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // 左列・右列コンテナ（PC のみ意味を持つ）
+  &__col {
+    display: flex;
+    flex-direction: column;
+
+    @include mq(sp) {
+      // SP では列コンテナを消してフラットに並べる
+      display: contents;
+    }
+  }
+
+  // ----------------------------------------
+  // 各行（dt + dd のグループ）
+  // PC: border-top のみ・border-left なし
+  // SP: border-top + border-bottom
+  // ----------------------------------------
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding-block: 24px;
+    border-top: 1px solid $primary-color;
+
+    @include mq(sp) {
+      flex-direction: row; // SP でもラベルと値は横並び維持
+      align-items: baseline;
+      gap: 24px;
+      padding-block: 30px;
+      border-top: 1px solid $primary-color;
+      border-bottom: 1px solid $primary-color;
+
+      // SP: 縦積みで border が重複するため -1px で相殺
+      & + & {
+        margin-top: -1px;
+      }
+    }
+  }
+
+  // ----------------------------------------
+  // ラベル（dt）
+  // ----------------------------------------
+  &__label {
+    flex-shrink: 0;
+    width: 6em; // 「運営会社」4文字 + 余裕で折り返し防止
+    font-size: 1.8rem;
+    color: $primary-color;
+    font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+    margin: 0;
+
+    @include mq(sp) {
+      width: 5em;
+      font-size: 1.4rem;
+    }
+  }
+
+  // ----------------------------------------
+  // 値（dd）
+  // ----------------------------------------
+  &__value {
+    font-size: 1.6rem;
+    color: $text-color;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    margin: 0;
+
+    @include mq(sp) {
+      font-size: 1.2rem;
+    }
+  }
+}

@@ -5,12 +5,12 @@
 // .c-section-title--center
 
 .c_section__inner {
-    margin-inline:auto;
-    max-width: $content-width-l;
-    padding-inline: 120px;
-    @include mq("sp") {
-      padding-inline: 0 30px;
-    }
+  margin-inline: auto;
+  max-width: $content-width-l;
+  padding-inline: 120px;
+  @include mq("sp") {
+    padding-inline: 0 30px;
+  }
 }
 
 .c-section-title {
@@ -23,7 +23,7 @@
     top: 50%;
     left: 70%;
     transform: translateY(-75%);
-    font-family: 'Parisienne', cursive;
+    font-family: "Parisienne", cursive;
     font-size: clamp(4rem, 8vw, 168rem);
     color: $primary-color;
     opacity: 0.12;
@@ -34,7 +34,7 @@
   }
 
   &__main {
-    font-family: 'Marcellus', serif;
+    font-family: "Marcellus", serif;
     font-size: clamp(1.1rem, 7vw, 8.4rem);
     font-weight: 400;
     color: $primary-color;
@@ -44,7 +44,7 @@
   }
 
   &__sub {
-    font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+    font-family: "游明朝", "Yu Mincho", Georgia, serif;
     font-size: clamp(1.2rem, 1.5vw, 1.4rem);
     color: $primary-color;
     letter-spacing: 0.08em;
@@ -55,144 +55,203 @@
       width: 100%;
     }
   }
-
 }
 
-
 .c-page-fv {
-    width: 100%;
-    height: clamp(200px, 30vw, 380px);
-    background-color: $bg-color-sub;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    &__title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(4rem, 8vw, 9rem);
-      font-weight: 400;
-      color: $primary-color;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      text-align: center;
-      margin: 0;
+  width: 100%;
+  height: clamp(200px, 30vw, 380px);
+  background-color: $bg-color-sub;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(4rem, 8vw, 9rem);
+    font-weight: 400;
+    color: $primary-color;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+    line-height: 1;
+  }
+}
+
+.c-btn {
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8em;
+  padding: 12px 24px;
+  border-radius: 100px;
+  border: 2px solid $accent-color-sub;
+  background-color: $accent-color-sub;
+  color: $white;
+  font-family: "游明朝", "Yu Mincho", Georgia, serif;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease;
+
+  // テキストの大文字指定はtext-transformで対応
+  text-transform: none;
+
+  @include mq(sp) {
+    padding: 1.2rem 2.8rem;
+  }
+
+  // ホバー: 色反転（outline で枠線を追加し border によるサイズ変化を避ける）
+  @include hover {
+    background-color: $white;
+    color: $accent-color-sub;
+    outline: 2px solid $accent-color-sub;
+    outline-offset: -2px;
+  }
+
+  // =============================
+  // アイコン付きバリアント
+  // =============================
+  &--icon {
+    gap: 1rem;
+
+    .c-btn__icon {
+      font-size: 1em;
       line-height: 1;
     }
   }
+}
 
+.c-fv {
+  overflow: hidden;
 
-  .c-btn {
-    line-height: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.8em;
-    padding: 12px 24px;
-    border-radius: 100px;
-    border: 2px solid $accent-color-sub;
-    background-color: $accent-color-sub;
-    color: $white;
-    font-family: '游明朝', 'Yu Mincho', Georgia, serif;
-    letter-spacing: 0.08em;
-    text-decoration: none;
-    white-space: nowrap;
-    cursor: pointer;
-    transition:
-      background-color 0.25s ease,
-      color 0.25s ease;
-  
-    // テキストの大文字指定はtext-transformで対応
-    text-transform: none;
-  
+  &__heading {
+    @include flex(center, center);
+
+    height: 36rem;
+    background-color: $bg-color-sub;
+
     @include mq(sp) {
-      padding: 1.2rem 2.8rem;
-    }
-  
-    // ホバー: 色反転（outline で枠線を追加し border によるサイズ変化を避ける）
-    @include hover {
-      background-color: $white;
-      color: $accent-color-sub;
-      outline: 2px solid $accent-color-sub;
-      outline-offset: -2px;
-    }
-  
-    // =============================
-    // アイコン付きバリアント
-    // =============================
-    &--icon {
-      gap: 1rem;
-  
-      .c-btn__icon {
-        font-size: 1em;
-        line-height: 1;
-      }
+      height: 20rem;
     }
   }
 
+  &__inner {
+    width: 100%;
+    max-width: $content-width-xl;
+    margin-inline: auto;
+    padding-inline: clamp(2rem, 5vw, 12rem);
+  }
 
+  &__title {
+    font-family: "Marcellus", serif;
+    font-size: clamp(3.2rem, 5.5vw, 8rem);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-align: center;
+    text-transform: uppercase;
+    color: $primary-color;
+  }
 
-  .c-fv {
+  &__image-wrapper {
+    position: relative;
+    height: 60rem;
     overflow: hidden;
-  
-    &__heading {
-      @include flex(center, center);
-  
-      height: 36rem;
-      background-color: $bg-color-sub;
-  
-      @include mq(sp) {
-        height: 20rem;
-      }
-    }
-  
-    &__inner {
-      width: 100%;
-      max-width: $content-width-xl;
-      margin-inline: auto;
-      padding-inline: clamp(2rem, 5vw, 12rem);
-    }
-  
-    &__title {
-      font-family: "Marcellus", serif;
-      font-size: clamp(3.2rem, 5.5vw, 8rem);
-      font-weight: 400;
-      line-height: 1.2;
-      letter-spacing: 0.08em;
-      text-align: center;
-      text-transform: uppercase;
-      color: $primary-color;
-    }
-  
-    &__image-wrapper {
-      position: relative;
-      height: 60rem;
-      overflow: hidden;
-  
-      @include mq(sp) {
-        height: 30rem;
-      }
-    }
-  
-    &__image {
-      position: absolute;
-      inset: -10% 0;
-  
-      width: 100%;
-      height: 120%;
-  
-      overflow: hidden;
-      will-change: transform;
-  
-      @include mq(sp) {
-        inset: -8% 0;
-        height: 116%;
-      }
-  
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
+
+    @include mq(sp) {
+      height: 30rem;
     }
   }
+
+  &__image {
+    position: absolute;
+    inset: -10% 0;
+
+    width: 100%;
+    height: 120%;
+
+    overflow: hidden;
+    will-change: transform;
+
+    @include mq(sp) {
+      inset: -8% 0;
+      height: 116%;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+}
+
+
+.breadcrumb {
+  // デフォルト背景色：$bg-color
+  background-color: $bg-color;
+  padding: 12px 0;
+
+  @include mq(sp) {
+    padding: 10px 0;
+  }
+
+  // 背景色バリアント（変数名ベースで命名）
+  &--sub {
+    background-color: $bg-color-sub;
+  }
+
+  ul {
+    @include flex(flex-start, center, row, nowrap);
+    list-style: none;
+    margin: 0 auto;
+    padding: 12px 120px;
+    max-width: $content-width-l;
+    gap: 0;
+
+    @include mq(sp) {
+      padding: 10px 20px;
+    }
+  }
+
+  li {
+    font-size: 1.2rem;
+    color: $primary-color;
+    letter-spacing: 0.08em;
+    line-height: 1;
+
+    @include mq(sp) {
+      font-size: 1.1rem;
+    }
+
+    // セパレーター（「ホーム」のliの直後に::after で｜を出す）
+    &:not(:last-child)::after {
+      content: '｜';
+      margin-inline: 8px;
+      opacity: 0.5;
+
+      @include mq(sp) {
+        margin-inline: 6px;
+      }
+    }
+
+    // 現在ページ（最後のli）
+    &:last-child {
+      opacity: 0.7;
+    }
+  }
+
+  a {
+    color: $primary-color;
+    text-decoration: none;
+    transition: color 0.25s ease;
+
+    @include hover {
+      opacity: 0.7;
+    }
+  }
+}

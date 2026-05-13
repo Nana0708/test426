@@ -164,66 +164,7 @@
       <h2 class="c-section-title__main uppercase">price menu</h2>
       <p class="c-section-title__sub">メニュー料金</p>
     </div>
-
-    <!-- メニューリスト -->
-    <nav class="price__nav" aria-label="料金メニュー">
-      <ul class="price__list">
-
-        <li class="price__item">
-          <a href="/price/body/" class="price__link">
-            <span class="price__name">
-              <span class="price__name-en capitalize">body</span>
-              <span class="price__name-ja">体脱毛</span>
-            </span>
-            <i class="fa-solid fa-chevron-right price__arrow" aria-hidden="true"></i>
-          </a>
-        </li>
-
-        <li class="price__item">
-          <a href="/price/v-line/" class="price__link">
-            <span class="price__name">
-              <span class="price__name-en capitalize">v-line</span>
-              <span class="price__name-ja">VIO脱毛</span>
-            </span>
-            <i class="fa-solid fa-chevron-right price__arrow" aria-hidden="true"></i>
-          </a>
-        </li>
-
-        <li class="price__item">
-          <a href="/price/custom/" class="price__link">
-            <span class="price__name">
-              <span class="price__name-en capitalize">custom</span>
-              <span class="price__name-ja">オーダーメイド</span>
-            </span>
-            <i class="fa-solid fa-chevron-right price__arrow" aria-hidden="true"></i>
-          </a>
-        </li>
-
-        <li class="price__item">
-          <a href="/price/set/" class="price__link">
-            <span class="price__name">
-              <span class="price__name-en capitalize">set</span>
-              <span class="price__name-ja">セット脱毛</span>
-            </span>
-            <i class="fa-solid fa-chevron-right price__arrow" aria-hidden="true"></i>
-          </a>
-        </li>
-
-        <li class="price__item price__item--full">
-          <a href="/price/" class="price__link">
-            <span class="price__name">
-              <span class="price__name-en capitalize">all</span>
-              <span class="price__name-ja">全てのメニュー</span>
-            </span>
-            <i class="fa-solid fa-chevron-right price__arrow" aria-hidden="true"></i>
-          </a>
-        </li>
-
-        <!-- PC用ダミーセル（右列の空白・ボーダー補完） -->
-        <li class="price__item price__item--dummy" aria-hidden="true"></li>
-
-      </ul>
-    </nav>
+    <?php get_template_part('template-parts/parts-price-menu'); ?>
 
   </div><!-- /.price__inner -->
 </section><!-- /.price -->

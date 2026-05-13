@@ -5,7 +5,7 @@
  */
 ?>
 
-<section class="parts-sns">
+<div class="parts-sns">
   <a
     class="parts-sns__link"
     href="https://www.instagram.com/nn20250708/"
@@ -19,4 +19,4 @@
       </div>
     </div>
   </a>
-</section>
+</div>

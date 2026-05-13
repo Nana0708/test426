@@ -1,11 +1,11 @@
 <?php
 /**
  * パーツ: SALONS
- * 使い方: <?php get_template_part('template-parts/parts-salons'); ?>
+ * 使い方: <?php get_template_part('template-parts/parts-price-menu'); ?>
  */
 ?>
 
-<section class="parts-salons">
+<div class="parts-salons">
   <a class="parts-salons__link" href="<?php echo esc_url( get_post_type_archive_link('salons') ); ?>">
     <div class="parts-salons__inner">
       <div class="c-section-title">
@@ -14,4 +14,4 @@
       </div>
     </div>
   </a>
-</section>
+</div>
