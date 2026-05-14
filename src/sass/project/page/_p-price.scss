@@ -1,2 +1,458 @@
 @use "../../config/mixin" as *;
 @use "../../config/variable" as *;
+
+
+.p-price-summary {
+  background-color: $bg-color;
+  padding-block: 120px;
+
+  @include mq(sp) {
+    padding-block: 80px;
+  }
+
+  // ----------------------------------------------------------
+  // __inner : コンテンツ幅制御 ＋ 2カラムレイアウト
+  // ----------------------------------------------------------
+  &__inner {
+    margin-inline: auto;
+    max-width: $content-width-l;
+    padding-inline: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 47px;
+
+    @include mq(sp) {
+      flex-direction: column-reverse; // SP: ナビ上・テキスト下
+      gap: 40px;
+      padding-inline: 30px;
+    }
+  }
+
+  // ----------------------------------------------------------
+  // __text : 左カラム（PC）／ 下（SP）
+  // ----------------------------------------------------------
+  &__text {
+    flex: 1;
+    color: $primary-color;
+    font-family: '游ゴシック', 'Yu Gothic', 'Hiragino Sans', sans-serif;
+
+    @include mq(sp) {
+      width: 100%;
+    }
+  }
+
+  &__desc {
+    color: $primary-color;
+    font-size: clamp(1.4rem, 1.5vw, 1.8rem);
+    line-height: 2;
+    letter-spacing: 0.1em;
+    margin: 0;
+
+    & + & {
+      margin-top: 1.5em;
+    }
+
+    @include mq(sp) {
+      font-size: 1.4rem;
+    }
+  }
+
+  // ----------------------------------------------------------
+  // __nav : 右カラム（PC）／ 上（SP）
+  // ----------------------------------------------------------
+  &__nav {
+    flex: 1;
+
+    @include mq(sp) {
+      width: 100%;
+    }
+  }
+
+  // ----------------------------------------------------------
+  // parts-price-menu の上書き（このセクション内のみ適用）
+  // ----------------------------------------------------------
+  .parts-price-menu__name-en {
+    font-size: clamp(2.4rem, 3vw, 3.2rem);
+
+    @include mq(sp) {
+      font-size: 2.4rem;
+    }
+  }
+
+  .parts-price-menu__name-ja {
+    font-size: clamp(1.0rem, 1.2vw, 1.2rem);
+
+    @include mq(sp) {
+      font-size: 1.2rem;
+    }
+  }
+}
+.parts-price-menu__nav {
+    margin-top: 0;
+  }
+
+    // ----------------------------------------    // ----------------------------------------
+
+
+
+  .p-price-menu {
+    background-color: $bg-color-sub; // セクション間の隙間から body 背景が透けないようにする
+  
+    // ----------------------------------------
+    // カテゴリ section
+    // ----------------------------------------
+    &__category {
+      background-color: $bg-color-sub;
+      padding-block: 56px;
+  
+      @include mq(sp) {
+        padding-top: 80px;
+        padding-bottom: 56px;
+      }
+  
+      // Bodyセクション（一番上）はpadding-top なし
+      &#body {
+        padding-top: 0;
+  
+        @include mq(sp) {
+          padding-top: 0;
+        }
+      }
+    }
+  
+    // ----------------------------------------
+    // inner（横幅制御）
+    // ----------------------------------------
+    &__inner {
+      margin-inline: auto;
+      max-width: 800px;
+      padding-inline: 0;
+  
+      @include mq(sp) {
+        padding-inline: 16px;
+      }
+    }
+  
+    // ----------------------------------------
+    // カテゴリタイトル h2 (Body / V-line / Set)
+    // ----------------------------------------
+    &__cat-title {
+      font-family: 'Marcellus', serif;
+      font-size: 8.4rem;
+      font-weight: 400;
+      color: $primary-color;
+      text-align: center;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      margin: 0 0 clamp(40px, 5vw, 60px);
+  
+      @include mq(sp) {
+        font-size: 8.4rem;
+        margin-bottom: 40px;
+      }
+    }
+  
+    // ----------------------------------------
+    // 料金グループ（Sパーツ / Mパーツ / Lパーツ etc.）
+    // ----------------------------------------
+    &__group {
+      margin-bottom: 80px;
+  
+      @include mq(sp) {
+        margin-bottom: 60px;
+      }
+  
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  
+    // ----------------------------------------
+    // パーツタイトル h3 (Sパーツ / Mパーツ etc.)
+    // ----------------------------------------
+    &__group-title {
+      font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+      font-size: 2.4rem;
+      font-weight: 400;
+      color: $primary-color;
+      text-align: center;
+      line-height: 1.4;
+      letter-spacing: 0.1em;
+      margin: 0 0 16px;
+  
+      @include mq(sp) {
+        font-size: 1.8rem;
+      }
+    }
+  
+    // ----------------------------------------
+    // 対象部位説明文
+    // ----------------------------------------
+    &__group-desc {
+      font-size: 1.8rem;
+      color: $primary-color;
+      text-align: center;
+      line-height: 2;
+      letter-spacing: 0.08em;
+      margin: 0 0 clamp(24px, 3vw, 40px);
+  
+      @include mq(sp) {
+        font-size: 1.4rem;
+        text-align: left;
+      }
+    }
+  
+    // ----------------------------------------
+    // 料金テーブル（divベース）
+    // ----------------------------------------
+    &__table {
+      width: 100%;
+    }
+  
+    // ヘッダー行（コース名行）
+    &__table-head {
+      display: grid;
+      grid-template-columns: 120px repeat(3, 1fr);
+      border-top: 1px solid $primary-color;
+      border-bottom: 1px solid $primary-color;
+  
+      @include mq(sp) {
+        display: none;
+      }
+    }
+  
+    // データ行ラッパー
+    &__table-body {
+      // 最下行の border-bottom を表全体の下線として使う
+    }
+  
+    // 各行
+    &__row {
+      display: grid;
+      grid-template-columns: 120px repeat(3, 1fr);
+      border-bottom: 1px solid $primary-color;
+  
+      @include mq(sp) {
+        display: block;
+        margin-bottom: 32px;
+  
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  
+    // セル共通
+    &__col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 16px 8px;
+      color: $primary-color;
+  
+      // ラベル列（1箇所 / 顔全体 etc.）
+      &--label {
+        font-size: 1.8rem;
+        letter-spacing: 0.08em;
+        align-items: flex-start;
+  
+        @include mq(sp) {
+          font-size: 1.8rem;
+          text-align: center;
+          align-items: center;
+          padding: 0 0 12px;
+          border-bottom: 1px solid $primary-color;
+          margin-bottom: 0;
+        }
+      }
+  
+      // コース名列（ヘッダー）
+      &--course {
+        align-items: center;
+        text-align: center;
+        gap: 2px;
+      }
+  
+      // 価格列
+      &--price {
+        align-items: center;
+        text-align: center;
+  
+        @include mq(sp) {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          padding: 14px 0;
+          border-bottom: 1px solid $primary-color;
+        }
+      }
+    }
+  
+    // コース名テキスト（ヘッダー）
+    &__course-name {
+      font-size: 1.8rem;
+      letter-spacing: 0.08em;
+      line-height: 1.4;
+    }
+  
+    &__course-count {
+      font-size: 1.8rem;
+      letter-spacing: 0.05em;
+    }
+  
+    // SP用コース名ラベル（PC では非表示）
+    &__sp-course-label {
+      display: none;
+      font-size: 1.6rem;
+      letter-spacing: 0.06em;
+      line-height: 1.4;
+  
+      @include mq(sp) {
+        display: block;
+      }
+    }
+  
+    // 料金数値
+    &__amount {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      line-height: 1;
+  
+      @include mq(sp) {
+        font-size: 1.8rem;
+      }
+    }
+  
+    // ----------------------------------------
+    // 注釈テキスト
+    // ----------------------------------------
+    &__note {
+      font-size: 1.2rem;
+      color: $primary-color;
+      text-align: right;
+      letter-spacing: 0.06em;
+      margin-top: 8px;
+      line-height: 1.8;
+  
+      @include mq(sp) {
+        font-size: 1.2rem;
+        text-align: left;
+      }
+    }
+  }
+  
+  // ----------------------------------------
+  // ユーティリティ
+  // ----------------------------------------
+  .u-pc-only {
+    @include mq(sp) {
+      display: none;
+    }
+  }
+
+     // ----------------------------------------    // ----------------------------------------
+
+     .p-price-custom {
+       background-color: $bg-color;
+       padding-block: 120px;
+     
+       @include mq(sp) {
+         padding-block: 80px;
+       }
+     
+       // ----------------------------------------------------------
+       // __inner : コンテンツ幅制御 ＋ 2カラムレイアウト
+       // 全体幅1080px・gap60px・残りをflexで左右に振り分け
+       // ----------------------------------------------------------
+       &__inner {
+         margin-inline: auto;
+         max-width: 1080px;
+         padding-inline: 0;
+         display: flex;
+         flex-direction: row;
+         align-items: flex-start;
+         gap: 60px;
+     
+         @include mq(sp) {
+           flex-direction: column;
+           gap: 32px;
+           padding-inline: 30px;
+         }
+       }
+     
+       // ----------------------------------------------------------
+       // __image-wrapper : 左カラム（正方形・1:1）
+       // ----------------------------------------------------------
+       &__image-wrapper {
+         flex: 1;
+         max-width: 100%;
+         aspect-ratio: 1 / 1;
+         overflow: hidden;
+     
+         @include mq(sp) {
+           width: 100%;
+           // SPは横幅いっぱい
+         }
+       }
+     
+       &__image {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         display: block;
+       }
+     
+       // ----------------------------------------------------------
+       // __body : 右カラム（テキスト側を少し広めに）
+       // ----------------------------------------------------------
+       &__body {
+         flex: 1.2; // 画像:テキスト ≒ 1:1.2
+         color: $primary-color;
+     
+         @include mq(sp) {
+           width: 100%;
+         }
+       }
+     
+       // ----------------------------------------------------------
+       // __title
+       // ----------------------------------------------------------
+       &__title {
+         font-family: 'Marcellus', serif;
+         font-size: 4.8rem;
+         font-weight: 400;
+         color: $primary-color;
+         letter-spacing: 0.05em;
+         line-height: 1;
+         margin: 0 0 clamp(24px, 3vw, 40px);
+     
+         @include mq(sp) {
+           font-size: 4.0rem;
+         }
+       }
+     
+       // ----------------------------------------------------------
+       // __text
+       // ----------------------------------------------------------
+       &__text {
+         p {
+           font-size: clamp(1.4rem, 1.5vw, 1.6rem);
+           color: $primary-color;
+           line-height: 2;
+           letter-spacing: 0.1em;
+           margin: 0;
+     
+           & + p {
+             margin-top: 1.5em;
+           }
+     
+           @include mq(sp) {
+             font-size: 1.4rem;
+           }
+         }
+       }
+     }

@@ -39,17 +39,17 @@
 &__item {
   border-top: 1px solid $primary-color;
 
-  // Body：1行目左
-  &:nth-child(1) { grid-column: 1; grid-row: 1; }
-  // V-line：1行目右
-  &:nth-child(2) { grid-column: 2; grid-row: 1; border-left: 1px solid $primary-color; }
-  // Custom：2行目左
-  &:nth-child(3) { grid-column: 1; grid-row: 2; }
-  // Set：2行目右
-  &:nth-child(4) { grid-column: 2; grid-row: 2; border-left: 1px solid $primary-color; }
-  // All：3行目左のみ（下線なし）
-  &:nth-child(5) { grid-column: 1; grid-row: 3; }
-
+    // Body：1行目左
+    &:nth-child(1) { grid-column: 1; grid-row: 1; border-top: none; }
+    // V-line：1行目右
+    &:nth-child(2) { grid-column: 2; grid-row: 1; border-top: none; border-left: 1px solid $primary-color; }
+    // Custom：2行目左
+    &:nth-child(3) { grid-column: 1; grid-row: 2; }
+    // Set：2行目右
+    &:nth-child(4) { grid-column: 2; grid-row: 2; border-left: 1px solid $primary-color; }
+    // All：3行目左のみ（下線なし）
+    &:nth-child(5) { grid-column: 1; grid-row: 3; }
+    
   @include mq(sp) {
     &:nth-child(1),
     &:nth-child(2),
