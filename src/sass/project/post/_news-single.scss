@@ -1,0 +1,272 @@
+@use "../../config/mixin" as *;
+@use "../../config/variable" as *;
+
+
+.p-news-single {
+
+  &__inner {
+    max-width: $content-width-l; // 1200px
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: clamp(2rem, 5vw, 8rem);
+    padding-block: clamp(4rem, 6vw, 8rem);
+
+    @include mq(sp) {
+      padding-inline: 2rem;
+      padding-block: 4rem;
+    }
+  }
+
+  // 2カラムレイアウト（本文 8 : サイドバー 2）
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr 163px; // 約1037px : 約163px
+    gap: clamp(2.4rem, 4vw, 6rem);
+    align-items: start;
+
+    @include mq(tb) {
+      grid-template-columns: 1fr 140px;
+      gap: 3rem;
+    }
+
+    @include mq(sp) {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+  }
+
+  // ============================================================
+  // 記事本文エリア
+  // ============================================================
+  &__main {
+    min-width: 0; // grid内のオーバーフロー防止
+  }
+
+  // 記事タイトル
+  &__title {
+    font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.08em;
+    color: $primary-color;
+    margin: 0 0 0.8rem;
+
+    @include mq(sp) {
+      font-size: 1.8rem;
+    }
+  }
+
+  // カテゴリー・日付
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    margin-bottom: 2.4rem;
+    font-family: 'Marcellus', serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.05em;
+
+    @include mq(sp) {
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__cat {
+    a {
+      color: $primary-color;
+      text-decoration: none;
+      text-transform: capitalize;
+
+      @include hover {
+        text-decoration: underline;
+      }
+    }
+    
+  }
+
+  &__date {
+    color: $primary-color;
+  }
+
+  // アイキャッチ画像
+  &__thumbnail {
+    max-width: 100%;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    margin-bottom: 3.2rem;
+
+    @include mq(sp) {
+      margin-bottom: 2.4rem;
+    }
+
+    picture,
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  // デフォルト画像（アイキャッチ未設定時）
+  &__no-image {
+    max-width: 100%;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    margin-bottom: 3.2rem;
+
+    @include mq(sp) {
+      margin-bottom: 2.4rem;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  // ============================================================
+  // 本文
+  // ============================================================
+  &__body {
+    font-size: 1.6rem;
+    line-height: 2;
+    letter-spacing: 0.05em;
+  }
+
+  &__text {
+    color: $text-color;
+    margin-bottom: 2.4rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__section {
+    margin-bottom: 3.2rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // 小見出し
+  &__heading {
+    font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+    font-size: clamp(1.6rem, 2vw, 1.8rem);
+    font-weight: 400;
+    color: $primary-color;
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+    margin: 0 0 1.2rem;
+
+    @include mq(sp) {
+      font-size: 1.6rem;
+    }
+  }
+
+  // ============================================================
+  // 一覧へ戻るボタン
+  // ============================================================
+  &__back {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(4rem, 6vw, 6rem);
+  }
+
+  // ============================================================
+  // サイドバー
+  // ============================================================
+  &__sidebar {
+    @include mq(sp) {
+      order: 1; // ボタンの下に表示するためSPでは順番を変える
+      // ※PHP側で.p-news-single__backの後にサイドバーを配置する必要あり
+    }
+  }
+}
+
+
+// ============================================================
+// p-news-sidebar
+// サイドバー内部
+// ============================================================
+
+.p-news-sidebar {
+  position: sticky;
+  top: 12rem;
+  border-left: 1px solid $bg-color-sub; // 縦線
+  padding-left: 1.6rem;
+
+  @include mq(sp) {
+    position: static;
+    border-left: none; // SP では縦線なし
+    padding-left: 0;
+  }
+
+  &__title {
+    font-family: 'Marcellus', serif;
+    font-size: 3.2rem;
+    font-weight: 400;
+    color: $primary-color;
+    letter-spacing: 0.1em;
+    text-transform: capitalize;
+    margin: 0 0 1.6rem;
+
+    @include mq(sp) {
+      font-size: 2rem;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include mq(sp) {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0;
+    }
+  }
+
+  &__item {
+    & + & {
+      margin-top: 0.8rem;
+
+      @include mq(sp) {
+        margin-top: 0;
+      }
+    }
+
+    @include mq(sp) {
+      width: 50%; // 2列で並び3つ目は改行
+    }
+
+    // アクティブ状態：opacityで薄く
+    &.is-active {
+      .p-news-sidebar__link {
+        opacity: 0.4;
+      }
+    }
+  }
+
+  &__link {
+    font-size: 1.4rem;
+    color: $primary-color; // 全項目primary-color
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+    transition: opacity 0.25s ease;
+
+    @include hover {
+      opacity: 0.6;
+    }
+  }
+}

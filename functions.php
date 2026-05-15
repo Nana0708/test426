@@ -176,20 +176,32 @@ function breadcrumb()
     }
     // 投稿ページ
     else if (is_single()) {
-        $cat = get_the_category();
-        if (isset($cat[0]->cat_ID)) $cat_id = $cat[0]->cat_ID;
-        $cat_list = array();
-        while ($cat_id != 0) {
-            $cat = get_category($cat_id);
-            $cat_link = get_category_link($cat_id);
-            array_unshift($cat_list, '<li><a href="' . $cat_link . '">' . $cat->name . '</a></li>');
-            $cat_id = $cat->parent;
+        $post_type = get_post_type();
+        if ($post_type === 'news') {
+            echo $home;
+            echo '<li><a href="' . esc_url(get_post_type_archive_link('news')) . '">ニュース一覧</a></li>';
+            the_title('<li>', '</li>');
+        } else {
+            $cat = get_the_category();
+            if (isset($cat[0]->cat_ID)) $cat_id = $cat[0]->cat_ID;
+            $cat_list = array();
+            while ($cat_id != 0) {
+                $cat = get_category($cat_id);
+                $cat_link = get_category_link($cat_id);
+                array_unshift($cat_list, '<li><a href="' . $cat_link . '">' . $cat->name . '</a></li>');
+                $cat_id = $cat->parent;
+            }
+            echo $home;
+            foreach ($cat_list as $value) {
+                echo $value;
+            }
+            the_title('<li>', '</li>');
         }
+    }
+    // カスタム投稿アーカイブページ
+    else if (is_post_type_archive()) {
         echo $home;
-        foreach ($cat_list as $value) {
-            echo $value;
-        }
-        the_title('<li>', '</li>');
+        echo '<li>ニュース一覧</li>';
     }
     // 固定ページ
     else if (is_page()) {

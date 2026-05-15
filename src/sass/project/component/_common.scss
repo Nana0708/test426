@@ -257,3 +257,93 @@
     }
   }
 }
+
+.u-pc-only {
+  @include mq(sp) {
+    display: none;
+  }
+}
+
+.u-sp-only {
+  display: none;
+
+  @include mq(sp) {
+    display: inline;
+  }
+}
+
+.c-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: clamp(4rem, 6vw, 6rem);
+
+  // WordPressのpaginate_links()が出力するaタグ・spanタグを対象
+  a,
+  span {
+    font-family: 'Marcellus', serif;
+    font-size: 3.2rem;
+    color: $primary-color;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 4rem;
+    transition: opacity 0.25s ease;
+
+    @include mq(sp) {
+      font-size: 1.6rem;
+      min-width: 2.8rem;
+    }
+
+    @include hover {
+      opacity: 0.6;
+    }
+  }
+
+  // 現在のページ
+  .current {
+    opacity: 0.35;
+    cursor: default;
+
+    @include hover {
+      opacity: 0.35;
+    }
+  }
+
+  // 前へ・次へ矢印（Font Awesome）
+  .prev,
+  .next {
+    font-size: 1.6rem; // アイコンサイズ
+
+    @include mq(sp) {
+      font-size: 1.2rem;
+    }
+  }
+
+  .prev::before {
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    content: '\f053'; // fa-chevron-left
+  }
+
+  .next::after {
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    content: '\f054'; // fa-chevron-right
+  }
+
+  // 「...」ドット
+  .dots {
+    color: $primary-color;
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+
+    @include mq(sp) {
+      font-size: 1.4rem;
+    }
+  }
+}

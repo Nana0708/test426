@@ -1,9 +1,4 @@
-<?php
-/*
- * Template Name: ニュース一覧
- * Description: news カスタム投稿タイプの一覧ページ
- */
-get_header();
+<?php get_header();
 
 // 現在のカテゴリー情報を取得
 $current_cat      = get_queried_object();
@@ -43,39 +38,30 @@ $categories = get_terms( array(
 ) );
 ?>
 
-
-<section class="p-news-hero">
-    <div class="p-news-hero__inner">
-        <p class="p-news-hero__title"><?php echo esc_html( $current_cat_name ); ?></p>
-    </div>
-    <div class="p-news-hero__bg">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/news/hero-bg.jpg" alt="">
-    </div>
-</section>
-
-<!-- メインコンテンツ -->
 <main class="p-news-archive">
+<section class="c-fv">
+        <div class="c-fv__heading">
+            <div class="c-fv__inner">
+                <h1 class="c-fv__title">news</h1>
+            </div>
+        </div>
+        <div class="c-fv__image-wrapper js-parallax">
+            <div class="c-fv__image">
+                <img
+                    src="<?php echo esc_url(get_template_directory_uri()); ?>/src/img/news_top-pc.webp"
+                    alt="綺麗な薔薇とタオル"
+                    width="1440"
+                    height="600">
+            </div>
+        </div>
+    </section>
+
+
+        <!-- パンくずリスト -->
+        <nav class="breadcrumb"><?php breadcrumb(); ?></nav>
+<!-- メインコンテンツ -->
     <div class="p-news-archive__inner">
-
-        <!-- パンくず -->
-        <nav class="c-breadcrumb" aria-label="パンくずリスト">
-            <ol class="c-breadcrumb__list">
-                <li class="c-breadcrumb__item">
-                    <a class="c-breadcrumb__link" href="<?php echo esc_url( home_url( '/' ) ); ?>">ホーム</a>
-                </li>
-                <li class="c-breadcrumb__item c-breadcrumb__item--separator" aria-hidden="true">|</li>
-                <li class="c-breadcrumb__item">
-                    <a class="c-breadcrumb__link" href="<?php echo esc_url( get_post_type_archive_link( 'news' ) ); ?>">ニュース一覧</a>
-                </li>
-                <?php if ( $current_cat_slug ) : ?>
-                <li class="c-breadcrumb__item c-breadcrumb__item--separator" aria-hidden="true">|</li>
-                <li class="c-breadcrumb__item"><?php echo esc_html( $current_cat_name ); ?></li>
-                <?php endif; ?>
-            </ol>
-        </nav>
-
         <div class="p-news-archive__layout">
-
             <!-- 記事一覧 -->
             <div class="p-news-archive__main">
                 <?php if ( $news_query->have_posts() ) : ?>
@@ -83,7 +69,7 @@ $categories = get_terms( array(
                         <?php while ( $news_query->have_posts() ) : $news_query->the_post(); ?>
                             <?php
                             $terms     = get_the_terms( get_the_ID(), 'news_category' );
-                            $term_name = ( $terms && ! is_wp_error( $terms ) ) ? $terms[0]->name : 'Uncategorized';
+                            $term_name = ( $terms && ! is_wp_error( $terms ) ) ? $terms[0]->slug : '';
                             ?>
                             <li class="p-news-list__item">
                                 <a class="p-news-list__link" href="<?php the_permalink(); ?>">

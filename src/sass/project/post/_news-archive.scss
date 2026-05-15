@@ -1,0 +1,165 @@
+@use "../../config/mixin" as *;
+@use "../../config/variable" as*;
+
+
+.p-news-archive {
+
+  &__inner {
+    max-width: $content-width-l; // 1200px ※実幅1080pxはpadding-inlineで調整
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: clamp(2rem, 5vw, 6rem); // 左右60pxで約1080px
+    padding-block: clamp(4rem, 6vw, 8rem);
+
+    @include mq(sp) {
+      padding-inline: 2rem;
+      padding-block: 4rem;
+    }
+  }
+
+  // 2カラムレイアウト（記事864px : 余白42px : サイドバー174px）
+  &__layout {
+    display: grid;
+    grid-template-columns: 864px 174px;
+    gap: 42px;
+    align-items: start;
+
+    @include mq(tb) {
+      grid-template-columns: 1fr 160px;
+      gap: 3rem;
+    }
+
+    @include mq(sp) {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+  }
+
+  &__main {
+    min-width: 0;
+  }
+
+  &__empty {
+    font-size: 1.6rem;
+    color: $text-color;
+  }
+
+  // ============================================================
+  // サイドバー
+  // ============================================================
+  &__sidebar {
+    @include mq(sp) {
+      order: 1;
+    }
+  }
+}
+
+
+// ============================================================
+// p-news-list
+// 記事一覧
+// ============================================================
+
+.p-news-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  // ============================================================
+  // 各記事アイテム
+  // ============================================================
+  &__item {
+    background-color: $bg-color-sub;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__link {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0 2.4rem;
+    padding: 26px 24px;
+    text-decoration: none;
+    color: $text-color;
+    transition: opacity 0.25s ease;
+
+    @include mq(sp) {
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto;
+      gap: 0.4rem 0;
+      padding: 2rem 1.6rem;
+      align-items: end;
+    }
+
+    @include hover {
+      opacity: 0.5;
+    }
+  }
+
+  // 日付
+  &__date {
+    font-family: 'Marcellus', serif;
+    font-size: 1.6rem;
+    color: $primary-color;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+
+    @include mq(sp) {
+      grid-column: 1;
+      grid-row: 1;
+      font-size: 1.4rem;
+    }
+  }
+
+  // タイトル
+  &__title {
+    font-family: 'Marcellus', serif;
+    font-size: 1.6rem;
+    color: $primary-color;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+
+    // 1行で省略
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    @include mq(sp) {
+      grid-column: 1;
+      grid-row: 2;
+      white-space: normal;
+      font-size: 1.4rem;
+    }
+  }
+
+  // カテゴリー名（右下に大きく薄く表示）
+  &__cat {
+    font-family: 'Marcellus', serif;
+    font-size: 3.2rem;
+    color: $accent-color-sub;
+    opacity: 0.5;
+    letter-spacing: 0.05em;
+    text-transform: capitalize;
+    white-space: nowrap;
+    line-height: 1;
+    pointer-events: none;
+
+    @include mq(tb) {
+      font-size: 2.4rem;
+    }
+
+    @include mq(sp) {
+      grid-column: 2;
+      grid-row: 1 / 3;
+      font-size: 2rem;
+      align-self: end; // 右下に配置
+    }
+    &:empty {
+        display: none;
+      }
+  }
+}
