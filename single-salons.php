@@ -253,10 +253,10 @@
           店舗一覧へ
         </a>
       </div>
-
-  <?php endwhile;
+    </main>
+<?php endwhile;
 endif; ?>
 
-    </main>
 
-    <?php get_footer(); ?>
+
+<?php get_footer(); ?>
