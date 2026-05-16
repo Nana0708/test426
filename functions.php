@@ -175,34 +175,42 @@ function breadcrumb()
         the_archive_title('<li>', '</li>');
     }
     // 投稿ページ
-    else if (is_single()) {
-        $post_type = get_post_type();
-        if ($post_type === 'news') {
-            echo $home;
-            echo '<li><a href="' . esc_url(get_post_type_archive_link('news')) . '">ニュース一覧</a></li>';
-            the_title('<li>', '</li>');
-        } else {
-            $cat = get_the_category();
-            if (isset($cat[0]->cat_ID)) $cat_id = $cat[0]->cat_ID;
-            $cat_list = array();
-            while ($cat_id != 0) {
-                $cat = get_category($cat_id);
-                $cat_link = get_category_link($cat_id);
-                array_unshift($cat_list, '<li><a href="' . $cat_link . '">' . $cat->name . '</a></li>');
-                $cat_id = $cat->parent;
-            }
-            echo $home;
-            foreach ($cat_list as $value) {
-                echo $value;
-            }
-            the_title('<li>', '</li>');
-        }
-    }
-    // カスタム投稿アーカイブページ
-    else if (is_post_type_archive()) {
+else if (is_single()) {
+    $post_type = get_post_type();
+    if ($post_type === 'news') {
         echo $home;
-        echo '<li>ニュース一覧</li>';
+        echo '<li><a href="' . esc_url(get_post_type_archive_link('news')) . '">ニュース一覧</a></li>';
+        the_title('<li>', '</li>');
+    } elseif ($post_type === 'salons') {
+        echo $home;
+        the_title('<li>', '</li>');
+    } else {
+        $cat = get_the_category();
+        if (isset($cat[0]->cat_ID)) $cat_id = $cat[0]->cat_ID;
+        $cat_list = array();
+        while ($cat_id != 0) {
+            $cat = get_category($cat_id);
+            $cat_link = get_category_link($cat_id);
+            array_unshift($cat_list, '<li><a href="' . $cat_link . '">' . $cat->name . '</a></li>');
+            $cat_id = $cat->parent;
+        }
+        echo $home;
+        foreach ($cat_list as $value) {
+            echo $value;
+        }
+        the_title('<li>', '</li>');
     }
+}
+// カスタム投稿アーカイブページ
+else if (is_post_type_archive()) {
+    $post_type = get_queried_object()->name;
+    $labels = array(
+        'news'   => 'ニュース一覧',
+        'salons' => '店舗一覧',
+    );
+    echo $home;
+    echo '<li>' . ( $labels[$post_type] ?? get_post_type_labels(get_post_type_object($post_type))->name ) . '</li>';
+}
     // 固定ページ
     else if (is_page()) {
         echo $home;
@@ -318,14 +326,12 @@ function register_salons_post_type()
 add_action('init', 'register_salons_post_type');
 
 // 店舗投稿ページ　タイトルを追加⇨店舗名を入力
-function change_title_placeholder( $title ) {
-    $screen = get_current_screen();
-    if ( $screen->post_type == 'salons' ) {
-        $title = '店舗名を入力';
+add_filter( 'enter_title_here', function( $title, $post ) {
+    if ( $post->post_type === 'salons' ) {
+        return '店舗名（漢字）を入力　例：渋谷店';
     }
     return $title;
-}
-add_filter( 'enter_title_here', 'change_title_placeholder' );
+}, 10, 2 );
 
 // デフォルト投稿タイプの削除
 function remove_menus()

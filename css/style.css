@@ -3193,4 +3193,671 @@ svg {
   .p-news-sidebar__link:hover {
     opacity: 0.6;
   }
+}
+
+.p-salons-archive__prefectures {
+  background-color: #f9f8f6;
+  padding-block: clamp(60px, 8vw, 100px) clamp(60px, 8vw, 80px);
+}
+.p-salons-archive__prefectures-inner {
+  margin-inline: auto;
+  max-width: 1200px;
+  padding-inline: 120px;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-archive__prefectures-inner {
+    padding: 0 30px;
+  }
+}
+.p-salons-archive__pref-list {
+  list-style: none;
+  margin: clamp(32px, 5vw, 48px) 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(12px, 2vw, 20px) clamp(24px, 4vw, 48px);
+}
+.p-salons-archive__pref-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  text-decoration: none;
+  color: #ca7f13;
+  transition: opacity 0.25s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .p-salons-archive__pref-link:hover {
+    opacity: 0.7;
+  }
+}
+.p-salons-archive__pref-arrow {
+  font-size: clamp(0.6rem, 1vw, 0.8rem);
+  color: #ca7f13;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.p-salons-archive__pref-en {
+  font-family: "Marcellus", serif;
+  font-size: clamp(1.8rem, 3vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+.p-salons-archive__pref-ja {
+  font-family: "游明朝", "Yu Mincho", Georgia, serif;
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  color: #ca7f13;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+.p-salons-archive__area {
+  margin-bottom: clamp(60px, 8vw, 80px);
+}
+.p-salons-archive__area:last-child {
+  margin-bottom: 0;
+}
+.p-salons-archive__area-inner {
+  margin-inline: auto;
+  max-width: 1200px;
+  padding-inline: 120px;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-archive__area-inner {
+    padding: 0 30px;
+  }
+}
+.p-salons-archive__area-header {
+  background-color: #ca7f13;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  margin-bottom: clamp(32px, 5vw, 48px);
+}
+@media screen and (max-width: 765px) {
+  .p-salons-archive__area-header {
+    height: 60px;
+  }
+}
+.p-salons-archive__area-title {
+  font-family: "Marcellus", serif;
+  font-size: 4.8rem;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  margin: 0;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-archive__area-title {
+    font-size: 2.4rem;
+  }
+}
+.p-salons-archive__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-archive__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+.p-salons-archive__card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.25s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .p-salons-archive__card:hover {
+    opacity: 0.75;
+  }
+}
+.p-salons-archive__card-map {
+  width: 100%;
+  aspect-ratio: 570/360;
+  overflow: hidden;
+  display: block;
+  margin-bottom: 12px;
+}
+.p-salons-archive__card-map iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: none;
+}
+.p-salons-archive__card-info {
+  padding-inline: 0;
+}
+.p-salons-archive__card-name-en {
+  font-family: "Marcellus", serif;
+  font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+  font-weight: 400;
+  color: #ca7f13;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  margin: 0 0 4px;
+  text-transform: uppercase;
+}
+.p-salons-archive__card-name-ja {
+  font-family: "游明朝", "Yu Mincho", Georgia, serif;
+  font-size: clamp(1.2rem, 1.5vw, 1.4rem);
+  color: #ca7f13;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  margin: 0 0 8px;
+  display: block;
+}
+.p-salons-archive__card-address {
+  font-family: "游ゴシック", "Yu Gothic", "Hiragino Sans", sans-serif;
+  font-size: 1.4rem;
+  color: #464646;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.p-salons-single .c-fv__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(4px, 1vw, 8px);
+}
+.p-salons-single .c-fv__subtitle {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 4.8rem;
+  font-weight: 400;
+  color: #ca7f13;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+  line-height: 1;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single .c-fv__subtitle {
+    font-size: 2.4rem;
+  }
+}
+.p-salons-single .c-fv__title {
+  font-size: 8rem;
+  font-family: "游明朝", "Yu Mincho", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  line-height: 1.2;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single .c-fv__title {
+    font-size: 3.2rem;
+  }
+}
+.p-salons-single__intro {
+  padding-block: 120px;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__intro {
+    padding-block: 80px;
+  }
+}
+.p-salons-single__intro-inner {
+  margin-inline: auto;
+  max-width: 560px;
+  padding-inline: 40px;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__intro-inner {
+    padding: 0 30px;
+  }
+}
+.p-salons-single__intro-text {
+  font-family: "游明朝", "Yu Mincho", Georgia, serif;
+  font-size: 1.8rem;
+  color: #333333;
+  text-align: left;
+  line-height: 2;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__intro-text {
+    font-size: 1.4rem;
+  }
+}
+.p-salons-single__flow {
+  background-color: #f9f8f6;
+  padding-bottom: 80px;
+}
+.p-salons-single__flow-inner {
+  margin-inline: auto;
+  max-width: 1200px;
+  padding-inline: 120px;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__flow-inner {
+    padding: 0 30px;
+  }
+}
+.p-salons-single__flow-steps {
+  display: flex;
+  flex-direction: column;
+}
+.p-salons-single__flow-step {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr) 200px;
+  align-items: start;
+  gap: 0 40px;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.p-salons-single__flow-step-img-left {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 150px;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__flow-step-img-left {
+    display: none;
+  }
+}
+.p-salons-single__flow-step-img-right {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 150px;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__flow-step-img-right {
+    display: none;
+  }
+}
+.p-salons-single__flow-step-center {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+}
+.p-salons-single__flow-step-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+.p-salons-single__flow-step-num {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #949e33;
+  color: #fff;
+  font-family: "Marcellus", serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__flow-step-num {
+    margin-inline: auto;
+  }
+}
+.p-salons-single__flow-step-line {
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+  left: 30px;
+  width: 0;
+  border-left: 2px dashed rgba(148, 158, 51, 0.5);
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__flow-step-line {
+    left: 50%;
+  }
+}
+.p-salons-single__flow-step:last-child .p-salons-single__flow-step-line {
+  display: none;
+}
+.p-salons-single__flow-step-body {
+  padding: 8px 0 60px;
+  text-align: left;
+  width: 100%;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__flow-step-body {
+    text-align: center;
+    padding: 16px 0 40px;
+  }
+}
+.p-salons-single__flow-step-title {
+  font-family: "游明朝", "Yu Mincho", Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: #ca7f13;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  margin: 0 0 12px;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__flow-step-title {
+    font-size: 1.8rem;
+  }
+}
+.p-salons-single__flow-step-text {
+  font-family: "游ゴシック", "Yu Gothic", "Hiragino Sans", sans-serif;
+  font-size: 1.8rem;
+  color: #ca7f13;
+  letter-spacing: 0.06em;
+  line-height: 2;
+  margin: 0;
+  text-align: left;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__flow-step-text {
+    font-size: 1.4rem;
+  }
+}
+.p-salons-single__flow-step-imgs {
+  display: none;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__flow-step-imgs {
+    display: flex;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__flow-step:nth-child(odd) .p-salons-single__flow-step-imgs {
+    justify-content: flex-end;
+  }
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__flow-step:nth-child(even) .p-salons-single__flow-step-imgs {
+    justify-content: flex-start;
+  }
+}
+.p-salons-single__flow-step-img {
+  overflow: hidden;
+  border-radius: 50%;
+}
+.p-salons-single__flow-step-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.p-salons-single__flow-step-img--1 {
+  width: 150px;
+  aspect-ratio: 1/1;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__flow-step-img--1 {
+    width: 64px;
+    aspect-ratio: 1/1;
+  }
+}
+.p-salons-single__flow-step-img--2 {
+  width: 180px;
+  aspect-ratio: 1/1;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__flow-step-img--2 {
+    width: 90px;
+    aspect-ratio: 1/1;
+  }
+}
+.p-salons-single__flow-step-img--3 {
+  width: 150px;
+  aspect-ratio: 1/1;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__flow-step-img--3 {
+    width: 64px;
+    aspect-ratio: 1/1;
+  }
+}
+.p-salons-single__staff {
+  background-color: #464646;
+  padding-block: 80px;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__staff {
+    padding-block: 65px;
+  }
+}
+.p-salons-single__staff-inner {
+  margin-inline: auto;
+  max-width: 1200px;
+  padding-inline: 120px;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__staff-inner {
+    padding: 0 30px;
+  }
+}
+.p-salons-single__staff-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: clamp(32px, 5vw, 48px);
+}
+.p-salons-single__staff-heading-en {
+  font-family: "Marcellus", serif;
+  font-size: 4.8rem;
+  font-weight: 400;
+  color: #ca7f13;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  margin: 0;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__staff-heading-en {
+    font-size: 3.6rem;
+  }
+}
+.p-salons-single__staff-heading-ja {
+  font-family: "游ゴシック", "Yu Gothic", "Hiragino Sans", sans-serif;
+  font-size: 1.4rem;
+  color: #ca7f13;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+.p-salons-single__staff-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__staff-card {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+.p-salons-single__staff-img {
+  flex-shrink: 0;
+  width: 45%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  max-width: 480px;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__staff-img {
+    width: 240px;
+    height: 240px;
+    aspect-ratio: 1/1;
+    max-width: 240px;
+    margin-inline: auto;
+  }
+}
+.p-salons-single__staff-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.p-salons-single__staff-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  min-width: 0;
+}
+.p-salons-single__staff-text {
+  font-family: "游ゴシック", "Yu Gothic", "Hiragino Sans", sans-serif;
+  font-size: 1.8rem;
+  color: #ca7f13;
+  letter-spacing: 0.08em;
+  line-height: 2;
+  margin: 0;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__staff-text {
+    font-size: 1.4rem;
+  }
+}
+.p-salons-single__staff-name-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.p-salons-single__staff-name-en {
+  font-family: "游明朝", "Yu Mincho", Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: #ca7f13;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  margin: 0;
+}
+.p-salons-single__staff-name-ja {
+  font-family: "游ゴシック", "Yu Gothic", "Hiragino Sans", sans-serif;
+  font-size: 1.2rem;
+  color: #ca7f13;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+.p-salons-single__info {
+  background-color: #d4cebe;
+  padding-block: 80px;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__info {
+    padding-block: 60px;
+  }
+}
+.p-salons-single__info-inner {
+  margin-inline: auto;
+  max-width: 1200px;
+  padding-inline: 120px;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__info-inner {
+    padding: 0 30px;
+  }
+}
+.p-salons-single__info-wrap {
+  display: flex;
+  align-items: stretch;
+  gap: 60px;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__info-wrap {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+.p-salons-single__info-table {
+  flex: 1;
+  border-collapse: collapse;
+  min-width: 0;
+}
+.p-salons-single__info-table tr {
+  border-bottom: 1px solid #ca7f13;
+}
+.p-salons-single__info-table th {
+  font-family: "游明朝", "Yu Mincho", Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #ca7f13;
+  letter-spacing: 0.08em;
+  text-align: left;
+  white-space: nowrap;
+  padding: 20px 40px 20px 0;
+  vertical-align: top;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__info-table th {
+    font-size: 1.4rem;
+    padding: 16px 24px 16px 0;
+  }
+}
+.p-salons-single__info-table td {
+  font-family: "游ゴシック", "Yu Gothic", "Hiragino Sans", sans-serif;
+  font-size: 1.6rem;
+  color: #333333;
+  letter-spacing: 0.06em;
+  line-height: 1.8;
+  padding: 20px 0;
+  vertical-align: top;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__info-table td {
+    font-size: 1.4rem;
+    padding: 16px 0;
+  }
+}
+.p-salons-single__info-table td a {
+  color: #333333;
+  text-decoration: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .p-salons-single__info-table td a:hover {
+    color: #ca7f13;
+  }
+}
+.p-salons-single__info-map {
+  flex-shrink: 0;
+  width: 50%;
+  aspect-ratio: 3/2;
+  overflow: hidden;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__info-map {
+    width: 100%;
+    aspect-ratio: 3/2;
+  }
+}
+.p-salons-single__info-map iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: none;
+}
+.p-salons-single__back {
+  display: flex;
+  justify-content: center;
+  padding-block: 80px;
+}
+@media screen and (max-width: 765px) {
+  .p-salons-single__back {
+    padding-block: 60px;
+  }
 }/*# sourceMappingURL=style.css.map */
