@@ -1,0 +1,210 @@
+@use "../../config/mixin" as *;
+@use "../../config/variable" as *;
+
+
+.parts-p-reserve__minor-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 100px;
+
+  @include mq(sp) {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &-lead {
+    flex: 1;
+
+    @include mq(sp) {
+      order: 2;
+      width: 100%;
+    }
+  }
+
+  &-title {
+    font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+    font-size: clamp(2.4rem, 2.5vw, 3.2rem);
+    font-weight: 400;
+    color: $primary-color;
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+    margin: 0 0 42px;
+
+    @include mq(sp) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &-text {
+    font-size: 1.8rem;
+    color: $primary-color;
+    line-height: 1.5;
+    margin: 0;
+
+    @include mq(sp) {
+      font-size: 1.4rem;
+      line-height: 1.5;
+
+      br {
+        display: none;
+      }
+    }
+  }
+
+  &-download {
+    width: 240px;
+    flex-shrink: 0;
+    background-color: #D4CEBE;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    @include mq(sp) {
+      order: 1;
+      width: 240px;
+    }
+  }
+
+  &-download-label {
+    font-size: 1.8rem;
+    color: $primary-color;
+    letter-spacing: 0.08em;
+    margin: 0;
+    text-align: center;
+  }
+
+  &-download-btn {
+    display: inline-flex;
+    font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 37px;
+    background-color: $accent-color-sub;
+    color: $white;
+    font-size: 1.6rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    border-radius: 9999px;
+    transition: opacity 0.25s;
+
+    i {
+      font-size: 1.6rem;
+    }
+
+    @include hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+// =============================
+// TELセクション
+// =============================
+
+.parts-p-reserve__contact {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 100%;
+    background-color: $primary-color;
+    position: absolute;
+    left: 59%;
+    top: 0;
+  }
+
+  @include mq(sp) {
+    flex-direction: column;
+    gap: 24px;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  &-lead {
+    flex: 1.5;
+    padding-right: 60px;
+
+    @include mq(sp) {
+      padding-right: 0;
+      width: 100%;
+    }
+  }
+
+  &-title {
+    font-family: 'Marcellus', serif;
+    font-size: clamp(2.4rem, 5vw, 4.8rem);
+    font-weight: 400;
+    color: $primary-color;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    margin: 0 0 24px;
+
+    @include mq(sp) {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+  }
+
+  &-text {
+    font-size: 1.8rem;
+    color: $primary-color;
+    line-height: 1.5;
+    margin: 0;
+
+    @include mq(sp) {
+      font-size: 1.4rem;
+
+      br {
+        display: none;
+      }
+    }
+  }
+
+  &-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+
+    @include mq(sp) {
+      padding-left: 0;
+      width: 100%;
+      gap: 16px;
+    }
+  }
+
+  &-tel {
+    font-family: 'Marcellus', serif;
+    font-size: clamp(2.4rem, 4vw, 3.2rem);
+    color: $primary-color;
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+
+  &-hours {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 34px;
+    border: 1px solid $primary-color;
+    border-radius: 9999px;
+    font-size: 1.4rem;
+    color: $primary-color;
+    letter-spacing: 0.05em;
+    margin: 0;
+
+    @include mq(sp) {
+      padding: 6px 20px;
+    }
+  }
+}

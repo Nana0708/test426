@@ -1,2 +1,420 @@
 @use "../../config/mixin" as *;
 @use "../../config/variable" as *;
+
+
+// =============================
+// .p-reserve（ページ全体）
+// =============================
+
+.p-reserve {
+  background-color: $bg-color;
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  textarea {
+    background-color: #fff !important;
+  }
+
+  &__form {
+    background: #EDE9E4;
+
+    @include mq(sp) {
+      padding-bottom: 60px;
+    }
+  }
+
+  &__form-inner {
+    max-width: 1080px;
+    margin-inline: auto;
+    padding-inline: 40px;
+
+    @include mq(sp) {
+      padding-inline: 30px;
+    }
+  }
+}
+
+// =============================
+// フォーム各行
+// =============================
+
+.p-reserve-form__row {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  padding-bottom: 32px;
+
+  &:first-child {
+    border-top: 1px solid $bg-color-sub;
+  }
+
+  @include mq(sp) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding-bottom: 30px;
+  }
+
+  &--large {
+    margin-top: 8px;
+  }
+}
+
+.p-reserve-form__label-wrap {
+  width: 321px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 12px;
+
+  @include mq(sp) {
+    width: 100%;
+    padding-top: 0;
+  }
+}
+
+.p-reserve-form__input--short {
+  width: 300px !important;
+}
+
+.p-reserve-form__input-wrap {
+  flex: 1;
+  min-width: 0;
+  font-size: 1.6rem;
+
+  .wpcf7-form-control-wrap {
+    display: block;
+    width: 100%;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    display: block;
+    width: 100%;
+    height: 50px;
+    padding-inline: 16px;
+    background-color: #fff !important;
+    border: none;
+    border-radius: 0;
+    font-size: 1.6rem;
+    font-family: inherit;
+    color: $text-color;
+    appearance: none;
+    outline: none;
+  }
+
+  textarea {
+    display: block;
+    width: 100%;
+    min-height: 120px;
+    padding: 16px;
+    background-color: #fff !important;
+    border: none;
+    border-radius: 0;
+    font-size: 1.6rem;
+    font-family: inherit;
+    color: $text-color;
+    resize: vertical;
+    outline: none;
+    @include mq("sp") {
+      min-height: 200px;
+    }
+  }
+
+}
+
+.p-reserve-form__label-text {
+  font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+  font-size: 1.6rem;
+  color: $text-color;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+}
+
+.p-reserve-form__note {
+  font-size: 1.2rem;
+  color: $text-color;
+  margin-top: 8px;
+  text-align: left;
+}
+
+.p-reserve-form__submit {
+  padding-bottom: 80px;
+  @include mq("sp") {
+    display: flex;
+    justify-content: center;
+  }
+  .wpcf7-spinner {
+    display: none; // ← スピナーを非表示
+  }
+
+  .c-btn {
+    padding: 10px 63px;
+  }
+}
+
+// =============================
+// 必須・任意バッジ
+// =============================
+
+.p-reserve-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 17px;
+  border-radius: 15px;
+  font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+  font-size: 1.2rem;
+  color: $white;
+  white-space: nowrap;
+  line-height: 1.4;
+  flex-shrink: 0;
+
+  &--required {
+    background-color: $accent-color;
+  }
+
+  &--optional {
+    background-color: $bg-color-sub;
+    color: $text-color;
+  }
+}
+
+// =============================
+// チェックボックス（CF7構造）
+// =============================
+
+.p-reserve-checks,
+.p-reserve-time {
+  .wpcf7-list-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    cursor: pointer;
+
+    input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 30px;
+      height: 30px;
+      border: none;
+      background-color: $white;
+      flex-shrink: 0;
+      position: relative;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:checked {
+        background-color: $accent-color;
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 4px;
+          left: 9px;
+          width: 8px;
+          height: 14px;
+          border-right: 2px solid $white;
+          border-bottom: 2px solid $white;
+          transform: rotate(45deg);
+        }
+      }
+
+      @include hover {
+        opacity: 0.8;
+      }
+    }
+
+    .wpcf7-list-item-label {
+      font-size: 1.4rem;
+      color: $text-color;
+      letter-spacing: 0.1em;
+      line-height: 1.6;
+    }
+  }
+}
+
+.wpcf7-not-valid-tip {
+  font-size: 1.2rem;
+  color: #ff0000;
+  margin-top: 4px;
+}
+
+.p-reserve-checks {
+  .wpcf7-form-control-wrap {
+    .wpcf7-form-control {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 62px;
+
+      @include mq(sp) {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        justify-items: start;
+      }
+    }
+  }
+}
+
+// =============================
+// 連絡時間帯
+// =============================
+
+.p-reserve-time {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &__row {
+    display: flex;
+    align-items: center;
+
+    @include mq(sp) {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  }
+
+  &__day-label {
+    font-size: 1.4rem;
+    color: $text-color;
+    width: 50px;
+    flex-shrink: 0;
+  }
+
+  .wpcf7-form-control-wrap {
+    flex: 1;
+
+    @include mq(sp) {
+      flex: none;
+      width: 100%;
+    }
+
+    .wpcf7-form-control {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 80px;
+
+      @include mq(sp) {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .wpcf7-list-item {
+        flex: none;
+        margin: 0;
+      }
+    }
+  }
+}
+
+// =============================
+// 日付入力（Font Awesomeカレンダーアイコン）
+// =============================
+
+.p-reserve-date {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+
+  @include mq(sp) {
+    width: 100%;
+  }
+
+  input[type="date"] {
+    display: block;
+    width: 300px;
+    height: 50px;
+    padding-inline: 16px;
+    padding-right: 56px;
+    background-color: #fff !important;
+    border: none;
+    border-radius: 0;
+    font-size: 1.6rem;
+    font-family: inherit;
+    color: $text-color;
+    appearance: none;
+
+    @include mq(sp) {
+      width: calc(100% - 50px) !important;
+    }
+
+    &:not(:valid) {
+      color: transparent;
+    }
+
+    &::-webkit-date-and-time-value {
+      text-align: left;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background-color: $primary-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    flex-shrink: 0;
+
+    i {
+      color: $white;
+      font-size: 2rem;
+    }
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
+}
+
+// =============================
+// セクションラッパー
+// =============================
+
+.p-reserve__minor-notice {
+  padding-block: 121px;
+
+  @include mq(sp) {
+    padding-top: 0;
+    padding-bottom: 32px;
+  }
+
+  &-inner {
+    max-width: 1080px;
+    margin-inline: auto;
+
+    @include mq(sp) {
+      padding-inline: 30px;
+    }
+  }
+}
+
+.p-reserve__contact {
+  padding-bottom: 80px;
+
+  &-inner {
+    max-width: 1080px;
+    margin-inline: auto;
+
+    @include mq(sp) {
+      padding-inline: 30px;
+    }
+  }
+}

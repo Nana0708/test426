@@ -1,2 +1,6 @@
 @use "../../config/mixin" as *;
 @use "../../config/variable" as *;
+
+.p-reserve__confirm-inner {
+    padding-top: 90px;
+}

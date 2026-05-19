@@ -1,0 +1,150 @@
+@use "../../config/mixin" as *;
+@use "../../config/variable" as *;
+
+// =============================
+// parts-p-reserve（Stepヘッダー）
+// =============================
+
+.parts-p-reserve {
+  padding-block: 90px;
+  background-color: #EDE9E4;
+
+  @include mq(sp) {
+    padding-block: 60px;
+  }
+
+  &__inner {
+    max-width: 1080px;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+
+    @include mq(sp) {
+      flex-direction: column;
+      gap: 32px;
+      padding-inline: 30px;
+    }
+  }
+
+  &__lead {
+    flex: 1;
+  }
+
+  &__title {
+    font-family: 'Marcellus', serif;
+    font-size: 4.8rem;
+    font-weight: 400;
+    color: $primary-color;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-bottom: 48px;
+
+    @include mq(sp) {
+      font-size: 3.2rem;
+      text-align: left;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__text {
+    font-size: 1.4rem;
+    line-height: 2;
+    color: $text-color;
+    margin: 0;
+    letter-spacing: 0.1em;
+  }
+
+  &__steps {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+
+    @include mq(sp) {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  &__step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 55px 14px;
+    min-width: 120px;
+    color: #707070;
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      width: 80%;
+      height: 1px;
+      background-color: #707070;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &::before { top: 0; }
+    &::after { bottom: 0; }
+
+    &.is-active {
+      .parts-p-reserve__step-num,
+      .parts-p-reserve__step-label {
+        color: $primary-color;
+      }
+
+      &::before,
+      &::after {
+        background-color: $primary-color;
+      }
+    }
+
+    @include mq(sp) {
+      min-width: 0;
+      padding: 40px 11px;
+      flex: 1;
+    }
+  }
+
+  &__step-num {
+    font-family: 'Marcellus', serif;
+    font-size: 2rem;
+    color: #707070;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    transition: color 0.3s;
+
+    @include mq(sp) {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__step-label {
+    font-family: '游明朝', 'Yu Mincho', Georgia, serif;
+    font-size: 2.4rem;
+    color: #707070;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    transition: color 0.3s;
+
+    @include mq(sp) {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__contact-tel-link {
+    color: $primary-color;
+    text-decoration: none;
+
+    @include mq(pc) {
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+}

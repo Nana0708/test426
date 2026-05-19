@@ -1,20 +1,31 @@
 const parallaxItems = document.querySelectorAll(".js-parallax");
 
-const parallax = () => {
-  parallaxItems.forEach((item) => {
-    const image = item.querySelector(".c-fv__image");
+const isDesktop = window.matchMedia("(min-width: 768px)").matches;
 
-    if (!image) return;
+if (isDesktop) {
+  const parallax = () => {
+    parallaxItems.forEach((item) => {
+      const image = item.querySelector(".c-fv__image");
 
-    const rect = item.getBoundingClientRect();
-    const move = rect.top * 0.08;
+      if (!image) return;
 
-    image.style.transform = `translate3d(0, ${move}px, 0)`;
-  });
-};
+      const rect = item.getBoundingClientRect();
 
-window.addEventListener("scroll", parallax);
-window.addEventListener("load", parallax);
+      const windowCenter = window.innerHeight / 2;
+      const elementCenter = rect.top + rect.height / 2;
+
+      const distance = elementCenter - windowCenter;
+
+      const move = distance * -0.1;
+
+      image.style.transform = `translate3d(0, ${move}px, 0)`;
+    });
+
+    requestAnimationFrame(parallax);
+  };
+
+  requestAnimationFrame(parallax);
+}
 
 
   // ============================================================
@@ -91,6 +102,22 @@ jQuery(function ($) {
     if (slider.height() <= windowHeight) {
       // スライダーの高さがウィンドウの高さ以下の場合、自動再生を有効にする
       slider.slick("slickPlay");
+    }
+  });
+});
+
+// 来店希望日の未入力時テキストを非表示
+document.querySelectorAll('.p-reserve-date input[type="date"]').forEach(function(input) {
+  // 初期状態
+  if (!input.value) {
+    input.style.color = 'transparent';
+  }
+  // 値が変わったとき
+  input.addEventListener('change', function() {
+    if (this.value) {
+      this.style.color = '';
+    } else {
+      this.style.color = 'transparent';
     }
   });
 });

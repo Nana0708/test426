@@ -211,11 +211,15 @@ else if (is_post_type_archive()) {
     echo $home;
     echo '<li>' . ( $labels[$post_type] ?? get_post_type_labels(get_post_type_object($post_type))->name ) . '</li>';
 }
-    // 固定ページ
-    else if (is_page()) {
-        echo $home;
+// 固定ページ
+else if (is_page()) {
+    echo $home;
+    if (is_page(array('reserve', 'reserve-confirm', 'reserve-thanks'))) {
+        echo '<li>ご予約・お問い合わせ</li>';
+    } else {
         the_title('<li>', '</li>');
     }
+}
     // 404ページの場合
     else if (is_404()) {
         echo $home;
@@ -339,3 +343,6 @@ function remove_menus()
     remove_menu_page('edit.php');
 }
 add_action('admin_menu', 'remove_menus');
+
+// CF7の自動pタグを無効化
+add_filter('wpcf7_autop_or_not', '__return_false');
